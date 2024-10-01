@@ -1,10 +1,10 @@
-import { Button } from "@acme/core";
+import React from "react";
 
 export default function Page() {
   return (
     <>
       <h1>Web</h1>
-      <Button>Boop</Button>
+      <button className="btn btn-blue">Click me</button>
     </>
   );
 }

@@ -1,7 +1,10 @@
 {
-  "exclude": ["node_modules"],
-  "extends": "@acme/tsconfig/nextjs.json",
+  "exclude": [
+    "node_modules"
+  ],
+  "extends": "@narrator-ai/tsconfig/nextjs.json",
   "compilerOptions": {
+    "jsx": "preserve",
     "outDir": "dist",
     "incremental": true,
     "plugins": [
@@ -10,5 +13,9 @@
       }
     ]
   },
-  "include": ["src", "next-env.d.ts", ".next/types/**/*.ts"]
+  "include": [
+    "src",
+    "next-env.d.ts",
+    ".next/types/**/*.ts"
+  ]
 }
