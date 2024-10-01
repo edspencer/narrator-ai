@@ -37,4 +37,4 @@ jobs:
       - name: Run tests
         env:
           OPENAI_API_KEY: nope
-        run: turbo run test
+        run: pnpm test

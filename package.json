@@ -8,7 +8,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo build --filter=@narrator-ai/docs^... && changeset publish"
+    "release": "turbo build --filter=@narrator-ai/docs^... && changeset publish",
+    "test": "turbo run test"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
