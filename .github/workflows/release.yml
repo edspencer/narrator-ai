@@ -26,7 +26,12 @@ jobs:
           node-version: 20.x
 
       - name: Install Dependencies
-        run: pnpm i
+        run: pnpm install
+
+      - name: Run tests
+        env:
+          OPENAI_API_KEY: nope
+        run: pnpm test
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
