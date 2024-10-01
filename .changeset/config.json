@@ -6,5 +6,6 @@
   "linked": [],
   "access": "public",
   "updateInternalDependencies": "patch",
-  "ignore": ["@narrator-ai/docs"]
+  "ignore": ["@narrator-ai/docs"],
+  "baseBranch": "main"
 }
