@@ -1,29 +1,23 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import { useState } from "react";
 import { readStreamableValue } from "ai/rsc";
 import { getResponseType } from "./utils";
 
+import { createContext, useContext } from "react";
+
 export interface NarrationContentType {
   getContent: (id: string) => string;
-  regenerateContent: (id: string) => void;
+  regenerateContent: (id: string) => Promise<void>;
   isLoading: (id: string) => boolean;
   newContent?: string;
   markGoodExample: (id: string) => void;
   markBadExample: (id: string) => void;
 }
 
-const NarrationContext = createContext<NarrationContentType | undefined>(undefined);
+export const NarrationContext = createContext<NarrationContentType | undefined>(undefined);
 
 export const useNarrationContext = () => useContext(NarrationContext);
-
-export function useNarration() {
-  const context = useNarrationContext();
-  if (!context) {
-    throw new Error("useNarration must be used within a NarrationProvider");
-  }
-  return context;
-}
 
 export function NarrationProvider({ children, actions = {} }: { children: React.ReactNode; actions?: any }) {
   const [narrationStreams, setNarrationStreams] = useState<{ [key: string]: string }>({});
