@@ -3,7 +3,7 @@ import winston from "winston";
 import { Narrator } from "../Narrator";
 import { Evaluation, Trainer } from "../Trainer";
 import { generateText } from "ai";
-import { LLMTask } from "../types";
+import { GenerationTask } from "../types";
 
 jest.mock("fs");
 jest.mock("ai", () => ({
@@ -397,7 +397,7 @@ describe("Narrator", () => {
 
     it('should generate content and save example when evaluation is "save"', async () => {
       // Arrange
-      const task: LLMTask = { docId: "doc1", prompt: "Prompt text" };
+      const task: GenerationTask = { docId: "doc1", prompt: "Prompt text" };
       const generatedContent = "Generated content";
 
       // Mock narrator.generate to return generated content
@@ -434,7 +434,7 @@ describe("Narrator", () => {
 
     it('should not save example when evaluation is "skip"', async () => {
       // Arrange
-      const task: LLMTask = { docId: "doc1", prompt: "Prompt text" };
+      const task: GenerationTask = { docId: "doc1", prompt: "Prompt text" };
       const generatedContent = "Generated content";
 
       // Mock narrator.generate to return generated content
@@ -463,7 +463,7 @@ describe("Narrator", () => {
 
     it('should log "Failed to save example" when saveExample returns false', async () => {
       // Arrange
-      const task: LLMTask = { docId: "doc1", prompt: "Prompt text" };
+      const task: GenerationTask = { docId: "doc1", prompt: "Prompt text" };
       const generatedContent = "Generated content";
 
       // Mock narrator.generate to return generated content
