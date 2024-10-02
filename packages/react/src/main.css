@@ -17,5 +17,13 @@
         }
       }
     }
+
+    .spinner-wrapper {
+      @apply p-6 flex justify-center;
+
+      .spinner {
+        @apply h-12 w-12 rounded-full border-2 border-slate-400 border-r-transparent animate-spin;
+      }
+    }
   }
 }
