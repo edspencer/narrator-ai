@@ -1,0 +1,21 @@
+@tailwind components;
+
+@layer components {
+  .narration {
+    .titlebar {
+      @apply flex justify-start content-center justify-items-center items-baseline gap-3;
+
+      button {
+        @apply hover:drop-shadow-md opacity-50 hover:opacity-100 no-underline h-4 w-4;
+      }
+
+      .sparkle {
+        @apply hover:drop-shadow-md opacity-50 hover:opacity-100 no-underline h-4 w-4;
+
+        .sparkle-icon {
+          @apply text-yellow-400;
+        }
+      }
+    }
+  }
+}

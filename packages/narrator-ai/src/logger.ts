@@ -1,7 +1,13 @@
 import winston from "winston";
 
-export const defaultLogger = winston.createLogger({
+export const defaultNarratorLogger = winston.createLogger({
   level: "info",
-  format: winston.format.combine(winston.format.colorize(), winston.format.simple()),
+  format: winston.format.combine(winston.format.cli()),
+  transports: [new winston.transports.Console()],
+});
+
+export const defaultTrainerLogger = winston.createLogger({
+  level: "info",
+  format: winston.format.printf(({ message }) => message),
   transports: [new winston.transports.Console()],
 });

@@ -37,7 +37,11 @@ export function NarrationProvider({ children, actions = {} }: { children: React.
     const { output } = await regenerateEditorial(id);
 
     for await (const delta of readStreamableValue(output)) {
-      setNarrationStreams((streams) => ({ ...streams, [id]: streams[id] ? `${streams[id]}${delta}` : delta }));
+      const deltaString = delta as string;
+      setNarrationStreams((streams) => ({
+        ...streams,
+        [id]: streams[id] ? `${streams[id]}${deltaString}` : deltaString,
+      }));
     }
 
     setLoadingState({ ...loadingStates, [id]: false });

@@ -1,7 +1,7 @@
 import readline from "readline";
 
 import { LLMTask } from "./types";
-import { defaultLogger } from "./logger";
+import { defaultTrainerLogger } from "./logger";
 
 export type Verdict = "good" | "bad";
 export type Evaluation = { choice: "save"; verdict: Verdict; reason?: string } | { choice: "skip" };
@@ -13,7 +13,7 @@ export interface Trainer {
 export class HumanTrainer implements Trainer {
   logger: any;
 
-  constructor(params: { logger: any } = { logger: defaultLogger }) {
+  constructor(params: { logger: any } = { logger: defaultTrainerLogger }) {
     this.logger = params.logger;
   }
 

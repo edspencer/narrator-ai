@@ -5,7 +5,7 @@ import winston from "winston";
 
 import { generateText } from "ai";
 import { openai } from "@ai-sdk/openai";
-import { defaultLogger } from "./logger";
+import { defaultNarratorLogger, defaultTrainerLogger } from "./logger";
 
 import { LLMTask, Example, Narration } from "./types";
 import { HumanTrainer, Trainer } from "./Trainer";
@@ -86,12 +86,12 @@ export class Narrator {
     this.temperature = temperature;
     this.model = model || openai("gpt-4o");
 
-    this.logger = logger || defaultLogger;
+    this.logger = logger || defaultNarratorLogger;
 
     this.trainer =
       trainer ||
       new HumanTrainer({
-        logger: this.logger,
+        logger: defaultTrainerLogger,
       });
   }
 
