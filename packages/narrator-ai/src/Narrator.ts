@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import YAML from "yaml";
 import winston from "winston";
-import { generateText } from "ai";
+import { generateText, streamText } from "ai";
 import { openai } from "@ai-sdk/openai";
 import { defaultNarratorLogger, defaultTrainerLogger } from "./logger";
 import { GenerationTask, Example, Narration } from "./types";
@@ -147,7 +147,7 @@ export class Narrator {
   async train(task: GenerationTask) {
     const { docId } = task;
     const { logger } = this;
-    const content = await this.generate(task);
+    const content = (await this.generate(task)) as string;
     const answer = await this.trainer.evaluate(task, content);
 
     if (answer.choice === "save") {
@@ -166,7 +166,7 @@ export class Narrator {
    */
   async generate(task: GenerationTask, options: GenerateOptions = {}) {
     const { prompt, suffix, docId } = task;
-    const { save, goodExamplesLimit = 5, badExamplesLimit = 5 } = options;
+    const { save, goodExamplesLimit = 5, badExamplesLimit = 5, stream } = options;
     const { logger } = this;
 
     logger.info(`Generating content for ${docId}...\n`);
@@ -192,14 +192,28 @@ export class Narrator {
 
     const { model, temperature } = this;
     const llmParams = { model, temperature, prompt: promptElements.join("\n\n") };
-    const { text } = await generateText(llmParams);
 
-    if (save) {
-      const saveOutcome = await this.saveNarration({ docId, content: text });
-      logger.info(saveOutcome ? "Saved example" : "Failed to save example");
+    if (stream) {
+      const { textStream, text } = await streamText(llmParams);
+
+      text.then((content) => {
+        if (save) {
+          const saveOutcome = this.saveNarration({ docId, content });
+          logger.info(saveOutcome ? "Saved example" : "Failed to save example");
+        }
+      });
+
+      return textStream;
+    } else {
+      const { text } = await generateText(llmParams);
+
+      if (save) {
+        const saveOutcome = await this.saveNarration({ docId, content: text });
+        logger.info(saveOutcome ? "Saved example" : "Failed to save example");
+      }
+
+      return text;
     }
-
-    return text;
   }
 
   /**

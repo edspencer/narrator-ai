@@ -14,6 +14,6 @@
     "moduleResolution": "node",
     "jsx": "react-jsx" // Use the new JSX transform
   },
-  "include": ["src/**/*", "*.config.js"],
+  "include": ["src/**/*", "*.config.js", "*.config.mjs"],
   "exclude": ["node_modules", "dist"]
 }

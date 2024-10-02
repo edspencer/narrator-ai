@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState } from "react";
 import { readStreamableValue } from "ai/rsc";
+import { getResponseType } from "./utils";
 
 export interface NarrationContentType {
   getContent: (id: string) => string;
@@ -28,20 +29,26 @@ export function NarrationProvider({ children, actions = {} }: { children: React.
   const [narrationStreams, setNarrationStreams] = useState<{ [key: string]: string }>({});
   const [loadingStates, setLoadingState] = useState<{ [key: string]: boolean }>({});
 
-  const { markGoodExample, markBadExample, regenerateEditorial } = actions;
+  const { markGoodExample, markBadExample, regenerateNarration } = actions;
 
   const regenerateContent = async (id: string) => {
     setLoadingState({ ...loadingStates, [id]: true });
+    setNarrationStreams((streams) => ({ ...streams, [id]: "" }));
 
     //start the regeneration
-    const { output } = await regenerateEditorial(id);
+    const response = await regenerateNarration(id);
+    const responseType = getResponseType(response);
 
-    for await (const delta of readStreamableValue(output)) {
-      const deltaString = delta as string;
-      setNarrationStreams((streams) => ({
-        ...streams,
-        [id]: streams[id] ? `${streams[id]}${deltaString}` : deltaString,
-      }));
+    if (responseType === "stream") {
+      for await (const delta of readStreamableValue(response)) {
+        const deltaString = delta as string;
+        setNarrationStreams((streams) => ({
+          ...streams,
+          [id]: streams[id] ? `${streams[id]}${deltaString}` : deltaString,
+        }));
+      }
+    } else if (responseType === "ui" || responseType === "string") {
+      setNarrationStreams((streams) => ({ ...streams, [id]: response }));
     }
 
     setLoadingState({ ...loadingStates, [id]: false });
