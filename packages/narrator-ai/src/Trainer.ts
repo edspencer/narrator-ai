@@ -1,13 +1,13 @@
 import readline from "readline";
 
-import { LLMTask } from "./types";
+import { GenerationTask } from "./types";
 import { defaultTrainerLogger } from "./logger";
 
 export type Verdict = "good" | "bad";
 export type Evaluation = { choice: "save"; verdict: Verdict; reason?: string } | { choice: "skip" };
 
 export interface Trainer {
-  evaluate(task: LLMTask, content: string): Promise<Evaluation>;
+  evaluate(task: GenerationTask, content: string): Promise<Evaluation>;
 }
 
 export class HumanTrainer implements Trainer {
@@ -17,10 +17,10 @@ export class HumanTrainer implements Trainer {
     this.logger = params.logger;
   }
 
-  async evaluate(task: LLMTask, content: string): Promise<Evaluation> {
-    this.logger.info(`Proposed content for ${task.docId}:\n`);
+  async evaluate(task: GenerationTask, content: string): Promise<Evaluation> {
+    // this.logger.info(`Proposed content for ${task.docId}:\n`);
     this.logger.info(content);
-    this.logger.info("\n\n");
+    this.logger.info("\n");
 
     return await this.getExampleVerdict();
   }
@@ -56,6 +56,7 @@ export class HumanTrainer implements Trainer {
     return new Promise((resolve) => {
       rl.question("Reasoning (optional, Enter to skip): ", (reason) => {
         rl.close();
+        console.log("\n");
         resolve(reason);
       });
     });

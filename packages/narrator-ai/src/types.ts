@@ -1,4 +1,4 @@
-export type LLMTask = {
+export type GenerationTask = {
   docId: string;
   prompt: string;
   suffix?: string;

@@ -2,7 +2,7 @@
 
 import winston from "winston";
 import { HumanTrainer, Evaluation } from "../Trainer";
-import { LLMTask } from "../types";
+import { GenerationTask } from "../types";
 import readline from "readline";
 
 jest.mock("readline");
@@ -34,7 +34,7 @@ describe("HumanTrainer", () => {
 
   it('should return verdict "good" when user inputs "g" and provides a reason', async () => {
     // Arrange
-    const task: LLMTask = { docId: "doc1", prompt: "Prompt text" };
+    const task: GenerationTask = { docId: "doc1", prompt: "Prompt text" };
     const content = "Generated content";
 
     // Simulate user input: 'g' for the first question, 'some reason' for the second
@@ -59,7 +59,7 @@ describe("HumanTrainer", () => {
 
   it('should return verdict "bad" when user inputs "b" and provides a reason', async () => {
     // Arrange
-    const task: LLMTask = { docId: "doc1", prompt: "Prompt text" };
+    const task: GenerationTask = { docId: "doc1", prompt: "Prompt text" };
     const content = "Generated content";
 
     // Simulate user input: 'b' for the first question, 'some reason' for the second
@@ -84,7 +84,7 @@ describe("HumanTrainer", () => {
 
   it('should return choice "skip" when user inputs "s"', async () => {
     // Arrange
-    const task: LLMTask = { docId: "doc1", prompt: "Prompt text" };
+    const task: GenerationTask = { docId: "doc1", prompt: "Prompt text" };
     const content = "Generated content";
 
     // Simulate user input: 's' for the first question
@@ -104,7 +104,7 @@ describe("HumanTrainer", () => {
 
   it('should return undefined reason when user inputs "g" and skips reason', async () => {
     // Arrange
-    const task: LLMTask = { docId: "doc1", prompt: "Prompt text" };
+    const task: GenerationTask = { docId: "doc1", prompt: "Prompt text" };
     const content = "Generated content";
 
     // Simulate user input: 'g' for the first question, '' (empty string) for the second
@@ -129,7 +129,7 @@ describe("HumanTrainer", () => {
 
   it('should return undefined reason when user inputs "b" and skips reason', async () => {
     // Arrange
-    const task: LLMTask = { docId: "doc1", prompt: "Prompt text" };
+    const task: GenerationTask = { docId: "doc1", prompt: "Prompt text" };
     const content = "Generated content";
 
     // Simulate user input: 'b' for the first question, '' (empty string) for the second

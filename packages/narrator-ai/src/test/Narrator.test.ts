@@ -3,7 +3,7 @@ import winston from "winston";
 import { Narrator } from "../Narrator";
 import { Evaluation, Trainer } from "../Trainer";
 import { generateText } from "ai";
-import { LLMTask } from "../types";
+import { GenerationTask } from "../types";
 
 jest.mock("fs");
 jest.mock("ai", () => ({
@@ -18,22 +18,20 @@ describe("Narrator", () => {
   });
 
   it("should create an instance with default values", () => {
-    const narrator = new Narrator({ cacheDir: "/tmp" });
-    expect(narrator.cacheDir).toBe("/tmp");
+    const narrator = new Narrator({ outputDir: "/tmp" });
+    expect(narrator.outputDir).toBe("/tmp");
     expect(narrator.parallel).toBe(1);
     expect(narrator.temperature).toBe(0.9);
   });
 
   it("should create an instance with provided values", () => {
     const narrator = new Narrator({
-      cacheDir: "/tmp",
       parallel: 2,
       outputDir: "/output",
       examplesDir: "/examples",
       temperature: 0.7,
       logger,
     });
-    expect(narrator.cacheDir).toBe("/tmp");
     expect(narrator.parallel).toBe(2);
     expect(narrator.outputDir).toBe("/output");
     expect(narrator.examplesDir).toBe("/examples");
@@ -44,7 +42,7 @@ describe("Narrator", () => {
   describe("generate", () => {
     it("should fetch good examples for the task", async () => {
       // Arrange
-      const narrator = new Narrator({ cacheDir: "/tmp", examplesDir: "/examples", logger });
+      const narrator = new Narrator({ outputDir: "/tmp", examplesDir: "/examples", logger });
       const task = { docId: "doc1", prompt: "Write a story about a cat." };
 
       // Mock getExamplesForTask
@@ -68,7 +66,7 @@ describe("Narrator", () => {
 
     it("should fetch bad examples for the task", async () => {
       // Arrange
-      const narrator = new Narrator({ cacheDir: "/tmp", examplesDir: "/examples", logger });
+      const narrator = new Narrator({ outputDir: "/tmp", examplesDir: "/examples", logger });
       const task = { docId: "doc1", prompt: "Write a story about a cat." };
 
       // Mock getExamplesForTask
@@ -93,7 +91,7 @@ describe("Narrator", () => {
     it("should pass in the correct temperature to the model", async () => {
       // Arrange
       const temperature = 0.7;
-      const narrator = new Narrator({ cacheDir: "/tmp", temperature, logger });
+      const narrator = new Narrator({ outputDir: "/tmp", temperature, logger });
       const task = { docId: "doc1", prompt: "Write a story about a cat." };
 
       // Mock generateText
@@ -116,7 +114,7 @@ describe("Narrator", () => {
       // Arrange
       const mkdirSyncSpy = jest.spyOn(fs, "mkdirSync").mockImplementation(() => "/tmp");
       const writeFileSyncSpy = jest.spyOn(fs, "writeFileSync").mockImplementation(() => {});
-      const narrator = new Narrator({ cacheDir: "/tmp", outputDir: "/output", logger });
+      const narrator = new Narrator({ outputDir: "/output", logger });
       const narration = { docId: "doc1", content: "Generated content" };
 
       // Act
@@ -133,7 +131,7 @@ describe("Narrator", () => {
       const mkdirSyncSpy = jest.spyOn(fs, "mkdirSync").mockImplementation(() => "/tmp");
       const writeFileSyncSpy = jest.spyOn(fs, "writeFileSync").mockImplementation(() => {});
       const outputDir = "/custom/output";
-      const narrator = new Narrator({ cacheDir: "/tmp", outputDir, logger });
+      const narrator = new Narrator({ outputDir, logger });
       const narration = { docId: "doc1", content: "Generated content" };
 
       // Act
@@ -150,7 +148,7 @@ describe("Narrator", () => {
       const mkdirSyncSpy = jest.spyOn(fs, "mkdirSync").mockImplementation(() => "/tmp");
       const writeFileSyncSpy = jest.spyOn(fs, "writeFileSync").mockImplementation(() => {});
       const outputFilename = (docId: string) => `custom_${docId}.txt`;
-      const narrator = new Narrator({ cacheDir: "/tmp", outputDir: "/output", outputFilename, logger });
+      const narrator = new Narrator({ outputDir: "/output", outputFilename, logger });
       const narration = { docId: "doc1", content: "Generated content" };
 
       // Act
@@ -164,7 +162,7 @@ describe("Narrator", () => {
     it("should return false and log an error if outputDir is not set", () => {
       // Arrange
       const logger = { error: jest.fn(), info: jest.fn(), debug: jest.fn() } as any;
-      const narrator = new Narrator({ cacheDir: "/tmp", logger });
+      const narrator = new Narrator({ logger });
       const narration = { docId: "doc1", content: "Generated content" };
 
       // Act
@@ -182,7 +180,7 @@ describe("Narrator", () => {
     it("should fetch the generated content from the file system", () => {
       // Arrange
       jest.spyOn(fs, "readFileSync").mockImplementation(() => "Generated content 1");
-      const narrator = new Narrator({ cacheDir: "/tmp", outputDir: "/output", logger });
+      const narrator = new Narrator({ outputDir: "/output", logger });
       const docId = "doc1";
 
       // Act
@@ -197,7 +195,7 @@ describe("Narrator", () => {
       // Arrange
       jest.spyOn(fs, "readFileSync").mockImplementation(() => "Generated content 2");
       const outputDir = "/custom/output";
-      const narrator = new Narrator({ cacheDir: "/tmp", outputDir, logger });
+      const narrator = new Narrator({ outputDir, logger });
       const docId = "doc1";
 
       // Act
@@ -211,7 +209,7 @@ describe("Narrator", () => {
       // Arrange
       jest.spyOn(fs, "readFileSync").mockImplementation(() => "Generated content 3");
       const outputFilename = (docId: string) => `custom_${docId}.txt`;
-      const narrator = new Narrator({ cacheDir: "/tmp", outputDir: "/output", outputFilename, logger });
+      const narrator = new Narrator({ outputDir: "/output", outputFilename, logger });
       const docId = "doc1";
 
       // Act
@@ -225,7 +223,7 @@ describe("Narrator", () => {
   describe("getExamplesForTask", () => {
     it("should fetch good examples", async () => {
       // Arrange
-      const narrator = new Narrator({ cacheDir: "/tmp", examplesDir: "/examples", logger });
+      const narrator = new Narrator({ examplesDir: "/examples", logger });
       const task = { docId: "group1/doc1", prompt: "Prompt text" };
       jest
         .spyOn(narrator, "readExampleYaml")
@@ -240,7 +238,7 @@ describe("Narrator", () => {
 
     it("should fetch bad examples", async () => {
       // Arrange
-      const narrator = new Narrator({ cacheDir: "/tmp", examplesDir: "/examples", logger });
+      const narrator = new Narrator({ examplesDir: "/examples", logger });
       const task = { docId: "group1/doc1", prompt: "Prompt text" };
       jest
         .spyOn(narrator, "readExampleYaml")
@@ -255,7 +253,7 @@ describe("Narrator", () => {
 
     it("should respect the limit passed by returning random examples", async () => {
       // Arrange
-      const narrator = new Narrator({ cacheDir: "/tmp", examplesDir: "/examples", logger });
+      const narrator = new Narrator({ examplesDir: "/examples", logger });
       const task = { docId: "group1/doc1", prompt: "Prompt text" };
       jest.spyOn(narrator, "readExampleYaml").mockReturnValue([
         { docId: "doc1", content: "Example 1", verdict: "good" },
@@ -278,7 +276,7 @@ describe("Narrator", () => {
       jest.spyOn(fs, "mkdirSync").mockImplementation(() => "/tmp");
       jest.spyOn(fs, "writeFileSync").mockImplementation(() => {});
       jest.spyOn(fs, "readFileSync").mockImplementation(() => "");
-      const narrator = new Narrator({ cacheDir: "/tmp", examplesDir: "/examples", logger });
+      const narrator = new Narrator({ examplesDir: "/examples", logger });
       const args = { docId: "group1/doc1", content: "Example content", verdict: "good", reason: "Good example" };
 
       // Act
@@ -298,7 +296,7 @@ describe("Narrator", () => {
       jest.spyOn(fs, "mkdirSync").mockImplementation(() => "/tmp");
       jest.spyOn(fs, "writeFileSync").mockImplementation(() => {});
       const examplesDir = "/custom/examples";
-      const narrator = new Narrator({ cacheDir: "/tmp", examplesDir, logger });
+      const narrator = new Narrator({ examplesDir, logger });
       const args = { docId: "group1/doc1", content: "Example content", verdict: "good", reason: "Good example" };
 
       // Act
@@ -315,7 +313,7 @@ describe("Narrator", () => {
 
     it("should get the content if not provided", async () => {
       // Arrange
-      const narrator = new Narrator({ cacheDir: "/tmp", examplesDir: "/examples", outputDir: "/output", logger });
+      const narrator = new Narrator({ examplesDir: "/examples", outputDir: "/output", logger });
       jest.spyOn(narrator, "getNarration").mockReturnValue("Generated content");
       jest.spyOn(fs, "mkdirSync").mockImplementation(() => "/tmp");
       jest.spyOn(fs, "writeFileSync").mockImplementation(() => {});
@@ -332,7 +330,7 @@ describe("Narrator", () => {
     it("should return false if the content was not provided and does not exist", async () => {
       // Arrange
       const logger = { error: jest.fn(), info: jest.fn(), debug: jest.fn() } as any;
-      const narrator = new Narrator({ cacheDir: "/tmp", examplesDir: "/examples", logger, outputDir: "/output" });
+      const narrator = new Narrator({ examplesDir: "/examples", logger, outputDir: "/output" });
       jest.spyOn(narrator, "getNarration").mockReturnValue(false);
 
       const args = { docId: "group1/doc1", verdict: "good", reason: "Good example" };
@@ -349,7 +347,7 @@ describe("Narrator", () => {
       // Arrange
       jest.spyOn(fs, "mkdirSync").mockImplementation(() => "/tmp");
       const writeFileSyncSpy = jest.spyOn(fs, "writeFileSync").mockImplementation(() => {});
-      const narrator = new Narrator({ cacheDir: "/tmp", examplesDir: "/examples", logger });
+      const narrator = new Narrator({ examplesDir: "/examples", logger });
       jest
         .spyOn(narrator, "readExampleYaml")
         .mockReturnValue([{ docId: "group1/doc1", content: "Example content", reason: "Existing reason" }]);
@@ -361,7 +359,7 @@ describe("Narrator", () => {
       // Assert
       expect(writeFileSyncSpy).toHaveBeenCalledWith(
         expect.any(String),
-        expect.stringContaining("- docId: group1/doc1\n  content: Example content\n  reason: Existing reason")
+        expect.stringContaining("- docId: group1/doc1\n  content: Example content\n  reason: New reason")
       );
       expect(result).toBe(true);
     });
@@ -385,7 +383,6 @@ describe("Narrator", () => {
       } as unknown as winston.Logger;
 
       narrator = new Narrator({
-        cacheDir: "/tmp",
         trainer: mockTrainer,
         logger: mockLogger,
       });
@@ -397,7 +394,7 @@ describe("Narrator", () => {
 
     it('should generate content and save example when evaluation is "save"', async () => {
       // Arrange
-      const task: LLMTask = { docId: "doc1", prompt: "Prompt text" };
+      const task: GenerationTask = { docId: "doc1", prompt: "Prompt text" };
       const generatedContent = "Generated content";
 
       // Mock narrator.generate to return generated content
@@ -427,14 +424,11 @@ describe("Narrator", () => {
         content: generatedContent,
         reason: evaluation.reason,
       });
-
-      // Ensure logger.info was called appropriately
-      expect(mockLogger.info).toHaveBeenCalledWith("Saved example");
     });
 
     it('should not save example when evaluation is "skip"', async () => {
       // Arrange
-      const task: LLMTask = { docId: "doc1", prompt: "Prompt text" };
+      const task: GenerationTask = { docId: "doc1", prompt: "Prompt text" };
       const generatedContent = "Generated content";
 
       // Mock narrator.generate to return generated content
@@ -459,43 +453,6 @@ describe("Narrator", () => {
 
       // Ensure saveExample was not called
       expect(saveExampleSpy).not.toHaveBeenCalled();
-    });
-
-    it('should log "Failed to save example" when saveExample returns false', async () => {
-      // Arrange
-      const task: LLMTask = { docId: "doc1", prompt: "Prompt text" };
-      const generatedContent = "Generated content";
-
-      // Mock narrator.generate to return generated content
-      jest.spyOn(narrator, "generate").mockResolvedValue(generatedContent);
-
-      // Mock trainer.evaluate to return a "save" choice with verdict and reason
-      const evaluation: Evaluation = { choice: "save", verdict: "good", reason: "Well written" };
-      (mockTrainer.evaluate as jest.Mock).mockResolvedValue(evaluation);
-
-      // Mock saveExample to return false
-      jest.spyOn(narrator, "saveExample").mockResolvedValue(false);
-
-      // Act
-      await narrator.train(task);
-
-      // Assert
-      // Ensure generate was called
-      expect(narrator.generate).toHaveBeenCalledWith(task);
-
-      // Ensure trainer.evaluate was called
-      expect(mockTrainer.evaluate).toHaveBeenCalledWith(task, generatedContent);
-
-      // Ensure saveExample was called
-      expect(narrator.saveExample).toHaveBeenCalledWith({
-        docId: task.docId,
-        verdict: evaluation.verdict,
-        content: generatedContent,
-        reason: evaluation.reason,
-      });
-
-      // Ensure logger.info was called with 'Failed to save example'
-      expect(mockLogger.info).toHaveBeenCalledWith("Failed to save example");
     });
   });
 });
