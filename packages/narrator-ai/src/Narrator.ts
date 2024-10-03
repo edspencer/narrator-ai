@@ -12,43 +12,107 @@ import { HumanTrainer, Trainer } from "./Trainer";
  * Represents the arguments required to create a Narrator instance.
  */
 export interface NarratorArgs {
-  /** Directory to cache the generated data */
-  cacheDir: string;
-  /** Number of parallel processes (optional) */
-  parallel?: number;
-  /** Directory where generated outputs will be saved (optional) */
+  /**
+   * Directory where generated outputs will be saved.
+   * (optional)
+   */
   outputDir?: string;
-  /** Directory where example YAML files are stored (optional) */
+
+  /**
+   * Directory where example YAML files are stored.
+   * (optional)
+   */
   examplesDir?: string;
-  /** Function to format examples (optional) */
-  exampleTemplate?: Function;
-  /** Temperature for the model generation (optional, default is 0.9) */
+
+  /**
+   * Function to format examples.
+   * Takes an example object and returns a formatted string.
+   * (optional)
+   */
+  exampleTemplate?: (example: Example) => string;
+
+  /**
+   * Temperature for the model generation. Controls randomness in generation.
+   * A value closer to 1 results in more randomness, closer to 0 results in more deterministic output.
+   * (optional, default is 0.9)
+   */
   temperature?: number;
-  /** The model to use for text generation (optional) */
+
+  /**
+   * The model to use for text generation, e.g., a model from the OpenAI API.
+   * (optional, default is openai("gpt-4o"))
+   */
   model?: any;
-  /** Function to generate output filenames (optional) */
-  outputFilename?: Function;
-  /** Custom logger instance (optional) */
+
+  /**
+   * Function to generate output filenames based on the document ID.
+   * (optional, default generates filenames from the docId)
+   */
+  outputFilename?: (docId: string) => string;
+
+  /**
+   * Custom logger instance for logging (e.g., Winston logger).
+   * (optional, default is `defaultNarratorLogger`)
+   */
   logger?: winston.Logger;
-  /** Trainer instance to evaluate generated examples (optional) */
+
+  /**
+   * Trainer instance responsible for evaluating generated examples.
+   * (optional, default is an instance of `HumanTrainer`)
+   */
   trainer?: Trainer;
+
+  /**
+   * Number of parallel processes to use when running generateMulti.
+   * (optional, default is 1)
+   */
+  parallel?: number;
 }
 
 /**
  * Options for the generation process.
  */
 export interface GenerateOptions {
-  /** Temperature for the model generation (optional) */
+  /**
+   * Temperature for the model generation. Controls the randomness of the generation process.
+   * A higher temperature (closer to 1) will produce more random outputs, while a lower temperature
+   *  (closer to 0) will generate more deterministic responses.
+   * (optional, default is 0.9)
+   */
   temperature?: number;
-  /** The model to use for text generation (optional) */
+
+  /**
+   * The model to use for text generation, such as an OpenAI model instance.
+   * This can be used to override the default model.
+   * (optional)
+   */
   model?: any;
-  /** Whether to save the generated content (optional) */
+
+  /**
+   * Whether the generated content should be saved automatically after the generation process completes.
+   * (optional, default is false)
+   */
   save?: boolean;
-  /** Limit for good examples (optional) */
+
+  /**
+   * The maximum number of "good" examples to include in the prompt for model guidance.
+   * These examples help the model understand what the ideal output looks like.
+   * (optional)
+   */
   goodExamplesLimit?: number;
-  /** Limit for bad examples (optional) */
+
+  /**
+   * The maximum number of "bad" examples to include in the prompt to guide the model on what to avoid.
+   * These examples help steer the model away from undesired outputs.
+   * (optional)
+   */
   badExamplesLimit?: number;
-  /** Whether the response should be streamed (optional) */
+
+  /**
+   * Whether the response should be streamed incrementally, allowing partial results to be returned
+   * before completion.
+   * (optional, default is false)
+   */
   stream?: boolean;
 }
 
@@ -56,13 +120,29 @@ export interface GenerateOptions {
  * Arguments for saving examples.
  */
 export interface SaveExampleArgs {
-  /** The document ID for the example */
+  /**
+   * The document ID for the example. This ID is used to identify the document being evaluated.
+   */
   docId: string;
-  /** Content of the example (optional) */
+
+  /**
+   * The content of the example being saved.
+   * If not provided, it defaults to the generated content associated with the document ID.
+   * (optional)
+   */
   content?: string;
-  /** The verdict ("good" or "bad") */
+
+  /**
+   * The verdict for the example, indicating whether the example is classified as "good" or "bad".
+   * This verdict is used to categorize the example.
+   */
   verdict: string;
-  /** Reason for the verdict (optional) */
+
+  /**
+   * The reason for assigning the verdict. This provides context or justification for why
+   * the example was marked as "good" or "bad".
+   * (optional)
+   */
   reason?: string;
 }
 
@@ -84,7 +164,6 @@ const examplesByVerdict = (examplesDir: string, key: string, verdict: string) =>
  * Example usage:
  * ```typescript
  * const narrator = new Narrator({
- *   cacheDir: "/tmp",
  *   outputDir: "./output",
  *   examplesDir: "./examples",
  * });
@@ -98,24 +177,78 @@ const examplesByVerdict = (examplesDir: string, key: string, verdict: string) =>
  * ```
  */
 export class Narrator {
-  cacheDir: string;
+  /**
+   * Number of parallel processes to use when running `generateMulti`.
+   * Defaults to 1 if not provided.
+   */
   parallel: number = 1;
+
+  /**
+   * Directory where generated outputs will be saved.
+   * If undefined, outputs will not be saved automatically.
+   */
   outputDir: string | undefined;
+
+  /**
+   * Directory where example YAML files are stored.
+   * Used for fetching good and bad examples to guide model generation.
+   */
   examplesDir: string | undefined;
+
+  /**
+   * Function to format examples.
+   * This function is applied to examples before they are used in prompts.
+   * Example function signature: `(example: Example) => string`.
+   */
   exampleTemplate: Function;
+
+  /**
+   * Temperature for the model generation.
+   * Controls the randomness of the generated output, where a higher value results in more varied responses.
+   * If undefined, the default temperature is used.
+   */
   temperature: any;
+
+  /**
+   * The model used for text generation, such as an instance of OpenAI's GPT models.
+   * If undefined, a default model (e.g., `openai("gpt-4o")`) will be used.
+   */
   model: any;
+
+  /**
+   * Function to generate output filenames based on the document ID.
+   * If undefined, filenames are generated using the document ID by default.
+   * Example function signature: `(docId: string) => string`.
+   */
   outputFilename: Function;
+
+  /**
+   * Custom logger instance for logging (e.g., a Winston logger).
+   * If undefined, a default logger will be used.
+   */
   logger: winston.Logger;
+
+  /**
+   * Trainer instance responsible for evaluating generated examples.
+   * Used to classify examples as good or bad based on feedback or custom logic.
+   */
   trainer: Trainer;
 
   /**
    * Creates a new instance of the Narrator class.
    *
-   * @param args - Arguments required to initialize the Narrator.
+   * @param {Object} args - The argument object.
+   * @param {number} [args.parallel] - Number of parallel processes to use when running generateMulti (optional).
+   * @param {string} [args.outputDir] - Directory where generated outputs will be saved (optional).
+   * @param {Function} [args.outputFilename] - Function to generate the output filename based on the document ID (optional).
+   * @param {string} [args.examplesDir] - Directory where example YAML files are stored (optional).
+   * @param {Function} [args.exampleTemplate=defaultExampleTemplate] - Function to format examples (optional, default is `defaultExampleTemplate`).
+   * @param {number} [args.temperature=0.9] - Temperature for the model generation (optional, default is 0.9).
+   * @param {any} [args.model=openai("gpt-4o")] - The model to use for text generation (optional, default is `openai("gpt-4o")`).
+   * @param {winston.Logger} [args.logger=defaultNarratorLogger] - Custom logger instance (optional, default is `defaultNarratorLogger`).
+   * @param {Trainer} [args.trainer=new HumanTrainer()] - Trainer instance to evaluate generated examples (optional, default is a new instance of `HumanTrainer`).
    */
   constructor({
-    cacheDir,
     parallel,
     outputDir,
     outputFilename,
@@ -126,7 +259,6 @@ export class Narrator {
     logger,
     trainer,
   }: NarratorArgs) {
-    this.cacheDir = cacheDir;
     this.parallel = parallel || this.parallel;
     this.outputDir = outputDir;
     this.outputFilename = outputFilename || ((docId: string) => docId);

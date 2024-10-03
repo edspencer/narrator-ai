@@ -18,9 +18,9 @@ export class HumanTrainer implements Trainer {
   }
 
   async evaluate(task: GenerationTask, content: string): Promise<Evaluation> {
-    this.logger.info(`Proposed content for ${task.docId}:\n`);
+    // this.logger.info(`Proposed content for ${task.docId}:\n`);
     this.logger.info(content);
-    this.logger.info("\n\n");
+    this.logger.info("\n");
 
     return await this.getExampleVerdict();
   }
@@ -56,6 +56,7 @@ export class HumanTrainer implements Trainer {
     return new Promise((resolve) => {
       rl.question("Reasoning (optional, Enter to skip): ", (reason) => {
         rl.close();
+        console.log("\n");
         resolve(reason);
       });
     });
