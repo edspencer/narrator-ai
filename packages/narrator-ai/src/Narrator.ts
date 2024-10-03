@@ -388,6 +388,11 @@ export class Narrator {
 
     const filePath = path.join(this.outputDir, this.outputFilename(docId));
 
+    if (!fs.existsSync(filePath)) {
+      logger.debug(`No narration found for ${docId}`);
+      return false;
+    }
+
     try {
       logger.debug(`Reading narration from ${filePath}`);
       return fs.readFileSync(filePath, "utf-8");

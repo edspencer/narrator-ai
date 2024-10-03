@@ -145,7 +145,7 @@ describe("Narrator", () => {
 
     it("should respect the outputFilename option", () => {
       // Arrange
-      const mkdirSyncSpy = jest.spyOn(fs, "mkdirSync").mockImplementation(() => "/tmp");
+      const existSyncSpy = jest.spyOn(fs, "existsSync").mockImplementation(() => true);
       const writeFileSyncSpy = jest.spyOn(fs, "writeFileSync").mockImplementation(() => {});
       const outputFilename = (docId: string) => `custom_${docId}.txt`;
       const narrator = new Narrator({ outputDir: "/output", outputFilename, logger });
