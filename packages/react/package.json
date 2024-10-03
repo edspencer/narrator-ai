@@ -9,6 +9,17 @@
   "files": [
     "dist/**"
   ],
+  "keywords": [
+    "ai",
+    "llm",
+    "react",
+    "vercel"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edspencer/narrator-ai.git"
+  },
+  "author": "Ed Spencer",
   "scripts": {
     "dev": "concurrently \"tsc --watch\" \"rollup -c --watch\"",
     "build": "tsc && rollup -c",
