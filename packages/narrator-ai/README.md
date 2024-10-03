@@ -22,7 +22,7 @@ Examples of where it can be used include:
 
 ## Installation
 
-There are 2 packages - `narrator-ai` and `@narrator-ai/react`. `narrator-ai` generates the meta-content for you, and `@narrator-ai/react` is a collection of React components that make it easy to show, regenerate and train Narrator via your UI:
+There are 2 packages - [narrator-ai](https://www.npmjs.com/package/narrator-ai) and [@narrator-ai/react](https://www.npmjs.com/package/@narrator-ai/react). [narrator-ai](https://www.npmjs.com/package/narrator-ai) generates the meta-content for you, and [@narrator-ai/react](https://www.npmjs.com/package/@narrator-ai/react) is a collection of React components that make it easy to show, regenerate and train Narrator via your UI:
 
 ```sh
 npm install narrator-ai
@@ -79,7 +79,7 @@ Check out the [@narrator-ai/react](https://www.npmjs.com/package/@narrator-ai/re
 
 In the example above I left an `<<Articles go here>>` string inside the `prompt` that I passed to `generate()`, but that's not much use - we need to provide the articles themselves. My prompt also referred to summaries of the articles - you could pass the whole article in but it's generally a better idea to summarize them first or the LLM can lose track of what its supposed to be doing.
 
-Generating the prompt strings is really up to you, but a good pattern is to use a Factory to create the `prompt` for a given docId. This allows you to encapsulate the logic for fetching those articles (or whatever else you need to fetch) in a centralized place, and as an added benefit makes it easy to regenerate content for a given `docId` - which is exactly what `@narrator-ai/react` does when you click the "Regenerate section" button.
+Generating the prompt strings is really up to you, but a good pattern is to use a Factory to create the `prompt` for a given docId. This allows you to encapsulate the logic for fetching those articles (or whatever else you need to fetch) in a centralized place, and as an added benefit makes it easy to regenerate content for a given `docId` - which is exactly what [@narrator-ai/react](https://www.npmjs.com/package/@narrator-ai/react) does when you click the "Regenerate section" button.
 
 ### Factory pattern
 
@@ -250,7 +250,7 @@ Spending 5 minutes to train Narrator is likely to significantly improve your res
 
 Under the covers, Narrator uses Few Shot Prompting to grab a selection of the content examples you marked as good or bad, and automatically passes them to the LLM along with your prompt when you call `generate`.
 
-Training is done via the `train` and `saveExample` functions, and is easy to hook up to the command line, and even easier to hook up to your UI if you use `@narrator-ai/react`.
+Training is done via the `train` and `saveExample` functions, and is easy to hook up to the command line, and even easier to hook up to your UI if you use [@narrator-ai/react](https://www.npmjs.com/package/@narrator-ai/react).
 
 ### Training in the CLI
 
@@ -303,7 +303,7 @@ The performance of the LLM in generating the type of content you want goes up si
 
 ### Training in the UI
 
-If you are using `@narrator-ai/react`, you can train Narrator directly in your UI while you're developing. This is perhaps even easier than doing it via the CLI, and has the benefit of showing you the fully rendered content in the actual context it will be shown in inside your UI:
+If you are using [@narrator-ai/react](https://www.npmjs.com/package/@narrator-ai/react), you can train Narrator directly in your UI while you're developing. This is perhaps even easier than doing it via the CLI, and has the benefit of showing you the fully rendered content in the actual context it will be shown in inside your UI:
 
 ![Example of @narrator-ai/react](./docs/UI-training-example.gif)
 
