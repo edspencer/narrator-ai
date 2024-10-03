@@ -1,5 +1,11 @@
 # narrator-ai
 
+## 0.2.3
+
+### Patch Changes
+
+- 87f3998: Check for narration file existence before reading
+
 ## 0.2.2
 
 ### Patch Changes
