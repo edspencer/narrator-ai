@@ -1,5 +1,22 @@
 # @narrator-ai/react
 
+## 0.2.0
+
+### Minor Changes
+
+- dfd9306: Visual feedback on good/bad example submission
+- b2ee65b: Add support for streaming text and UI back to Narration component
+- 35db084: Accept titleTag config for Narration
+- f665bfe: Tailwind for CSS, better Spinner CSS
+- 35db084: Added training reason form overlay
+- 35db084: Dropped markGoodExample and markBadExample for saveExample
+
+### Patch Changes
+
+- 579ce84: READMEs and docs
+- dfd9306: Cleaned up overly-nested React components
+- b2ee65b: Renamed regenerateEditorial to regenerateNarration
+
 ## 0.1.0
 
 ### Minor Changes

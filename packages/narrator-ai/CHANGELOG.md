@@ -1,5 +1,12 @@
 # narrator-ai
 
+## 0.2.1
+
+### Patch Changes
+
+- eca90d6: LLMTask -> GenerationTask
+- 579ce84: READMEs and docs
+
 ## 0.2.0
 
 ### Minor Changes
