@@ -1,5 +1,11 @@
 # narrator-ai
 
+## 0.2.2
+
+### Patch Changes
+
+- 6a7cfca: Doc and package json improvements
+
 ## 0.2.1
 
 ### Patch Changes
