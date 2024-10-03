@@ -1,73 +1,33 @@
-# Turborepo Design System starter with Changesets
+# NarratorAI - AI-powered text narrations for your content
 
-This is an official React design system starter powered by Turborepo. Versioning and package publishing is handled by [Changesets](https://github.com/changesets/changesets) and fully automated with GitHub Actions.
+**NarratorAI** is a Node JS & React package that makes it easy to generate meta-content "narration" based on other content. It shines at reading and understanding your existing content like articles, help pages, blog posts, etc, and generating short, friendly summaries that tell the reader what content may be most useful to them.
 
-## Using this example
+Examples of where it can be used include:
 
-Run the following command:
+- Text to introduce your latest content tagged with XYZ
+- Text to introduce the topics most recently discussed on your blog
+- "Read Next" paragraphs that link to other documents based on what the user is currently viewing
+
+## Key Features
+
+- **Automates tedious meta-content generation**: Uses an LLM of your choice to generate meta-content for you
+- **Quick & easy Training**: CLI and UI-driven training options to rapidly align the LLM to what you want
+- **Built on top of Vercel AI SDK**: Fast, flexible and extensible foundation
+- **Optional React Components**: make it easy to integrate and train Narrator live in your UI
+
+## Installation
+
+There are 2 packages - `narrator-ai` and `@narrator-ai/react`. `narrator-ai` generates the meta-content for you, and `@narrator-ai/react` is a collection of React components that make it easy to show, regenerate and train Narrator via your UI:
 
 ```sh
-npx create-turbo@latest -e with-changesets
+npm install narrator-ai
+npm install @narrator-ai/react
 ```
 
-## What's inside?
+## Usage
 
-This Turborepo includes the following:
+## How it works
 
-### Apps and Packages
+## Training
 
-- `docs`: A placeholder documentation site powered by [Next.js](https://nextjs.org/)
-- `@acme/core`: core React components
-- `@acme/utils`: shared React utilities
-- `@acme/tsconfig`: shared `tsconfig.json`s used throughout the monorepo
-- `@acme/eslint-config`: ESLint preset
-
-Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Useful commands
-
-- `yarn build` - Build all packages and the docs site
-- `yarn dev` - Develop all packages and the docs site
-- `yarn lint` - Lint all packages
-- `yarn changeset` - Generate a changeset
-- `yarn clean` - Clean up all `node_modules` and `dist` folders (runs each package's clean script)
-
-### Changing the npm organization scope
-
-The npm organization scope for this design system starter is `@acme`. To change this, it's a bit manual at the moment, but you'll need to do the following:
-
-- Rename folders in `packages/*` to replace `acme` with your desired scope
-- Search and replace `acme` with your desired scope
-- Re-run `yarn install`
-
-## Versioning and Publishing packages
-
-Package publishing has been configured using [Changesets](https://github.com/changesets/changesets). Please review their [documentation](https://github.com/changesets/changesets#documentation) to familiarize yourself with the workflow.
-
-This example comes with automated npm releases setup in a [GitHub Action](https://github.com/changesets/action). To get this working, you will need to create an `NPM_TOKEN` and `GITHUB_TOKEN` in your repository settings. You should also install the [Changesets bot](https://github.com/apps/changeset-bot) on your GitHub repository as well.
-
-For more information about this automation, refer to the official [changesets documentation](https://github.com/changesets/changesets/blob/main/docs/automating-changesets.md)
-
-### npm
-
-If you want to publish package to the public npm registry and make them publicly available, this is already setup.
-
-To publish packages to a private npm organization scope, **remove** the following from each of the `package.json`'s
-
-```diff
-- "publishConfig": {
--  "access": "public"
-- },
-```
-
-### GitHub Package Registry
-
-See [Working with the npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#publishing-a-package-using-publishconfig-in-the-packagejson-file)
+## Configuration

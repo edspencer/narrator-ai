@@ -5,4 +5,5 @@ module.exports = {
   parserOptions: {
     project: true,
   },
+  browser: true,
 };

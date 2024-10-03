@@ -146,14 +146,12 @@ export class Narrator {
    */
   async train(task: GenerationTask) {
     const { docId } = task;
-    const { logger } = this;
     const content = (await this.generate(task)) as string;
     const answer = await this.trainer.evaluate(task, content);
 
     if (answer.choice === "save") {
       const { verdict, reason } = answer;
-      const saveOutcome = await this.saveExample({ docId, verdict, content, reason });
-      logger.info(saveOutcome ? "Saved example" : "Failed to save example");
+      return await this.saveExample({ docId, verdict, content, reason });
     }
   }
 
@@ -196,20 +194,18 @@ export class Narrator {
     if (stream) {
       const { textStream, text } = await streamText(llmParams);
 
-      text.then((content) => {
-        if (save) {
-          const saveOutcome = this.saveNarration({ docId, content });
-          logger.info(saveOutcome ? "Saved example" : "Failed to save example");
-        }
-      });
+      if (save) {
+        text.then((content) => {
+          this.saveNarration({ docId, content });
+        });
+      }
 
       return textStream;
     } else {
       const { text } = await generateText(llmParams);
 
       if (save) {
-        const saveOutcome = await this.saveNarration({ docId, content: text });
-        logger.info(saveOutcome ? "Saved example" : "Failed to save example");
+        this.saveNarration({ docId, content: text });
       }
 
       return text;
@@ -235,6 +231,8 @@ export class Narrator {
     try {
       fs.mkdirSync(path.dirname(savePath), { recursive: true });
       fs.writeFileSync(savePath, content);
+
+      logger.info(`Saved narration for ${docId}`);
       return true;
     } catch (e) {
       logger.error("error saving narration", e);
@@ -296,12 +294,12 @@ export class Narrator {
     const examplesSavePath = examplesForKey(exampleSaveDir, exampleKey);
     let existingExamples = this.readExampleYaml(examplesSavePath) || [];
 
-    existingExamples.push({ docId, content, reason });
-
+    // if this id/content pair already exists, remove it so we can overwrite
     existingExamples = existingExamples.filter(
-      (example: Example, index: number, self: Example[]) =>
-        index === self.findIndex((t) => t.docId === example.docId && t.content === example.content)
+      (example: Example) => example.docId !== docId && example.content !== content
     );
+
+    existingExamples.push({ docId, content, reason });
 
     try {
       fs.mkdirSync(exampleSaveDir, { recursive: true });

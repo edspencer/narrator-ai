@@ -11,8 +11,7 @@ export interface NarrationContentType {
   regenerateContent: (id: string) => Promise<void>;
   isLoading: (id: string) => boolean;
   newContent?: string;
-  markGoodExample: (id: string) => void;
-  markBadExample: (id: string) => void;
+  saveExample: (example: any) => Promise<boolean>;
 }
 
 export const NarrationContext = createContext<NarrationContentType | undefined>(undefined);
@@ -23,7 +22,7 @@ export function NarrationProvider({ children, actions = {} }: { children: React.
   const [narrationStreams, setNarrationStreams] = useState<{ [key: string]: string }>({});
   const [loadingStates, setLoadingState] = useState<{ [key: string]: boolean }>({});
 
-  const { markGoodExample, markBadExample, regenerateNarration } = actions;
+  const { saveExample, regenerateNarration } = actions;
 
   const regenerateContent = async (id: string) => {
     setLoadingState({ ...loadingStates, [id]: true });
@@ -57,7 +56,7 @@ export function NarrationProvider({ children, actions = {} }: { children: React.
   }
 
   return (
-    <NarrationContext.Provider value={{ getContent, regenerateContent, isLoading, markBadExample, markGoodExample }}>
+    <NarrationContext.Provider value={{ getContent, regenerateContent, isLoading, saveExample }}>
       {children}
     </NarrationContext.Provider>
   );

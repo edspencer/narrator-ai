@@ -361,7 +361,7 @@ describe("Narrator", () => {
       // Assert
       expect(writeFileSyncSpy).toHaveBeenCalledWith(
         expect.any(String),
-        expect.stringContaining("- docId: group1/doc1\n  content: Example content\n  reason: Existing reason")
+        expect.stringContaining("- docId: group1/doc1\n  content: Example content\n  reason: New reason")
       );
       expect(result).toBe(true);
     });
@@ -427,9 +427,6 @@ describe("Narrator", () => {
         content: generatedContent,
         reason: evaluation.reason,
       });
-
-      // Ensure logger.info was called appropriately
-      expect(mockLogger.info).toHaveBeenCalledWith("Saved example");
     });
 
     it('should not save example when evaluation is "skip"', async () => {
@@ -459,43 +456,6 @@ describe("Narrator", () => {
 
       // Ensure saveExample was not called
       expect(saveExampleSpy).not.toHaveBeenCalled();
-    });
-
-    it('should log "Failed to save example" when saveExample returns false', async () => {
-      // Arrange
-      const task: GenerationTask = { docId: "doc1", prompt: "Prompt text" };
-      const generatedContent = "Generated content";
-
-      // Mock narrator.generate to return generated content
-      jest.spyOn(narrator, "generate").mockResolvedValue(generatedContent);
-
-      // Mock trainer.evaluate to return a "save" choice with verdict and reason
-      const evaluation: Evaluation = { choice: "save", verdict: "good", reason: "Well written" };
-      (mockTrainer.evaluate as jest.Mock).mockResolvedValue(evaluation);
-
-      // Mock saveExample to return false
-      jest.spyOn(narrator, "saveExample").mockResolvedValue(false);
-
-      // Act
-      await narrator.train(task);
-
-      // Assert
-      // Ensure generate was called
-      expect(narrator.generate).toHaveBeenCalledWith(task);
-
-      // Ensure trainer.evaluate was called
-      expect(mockTrainer.evaluate).toHaveBeenCalledWith(task, generatedContent);
-
-      // Ensure saveExample was called
-      expect(narrator.saveExample).toHaveBeenCalledWith({
-        docId: task.docId,
-        verdict: evaluation.verdict,
-        content: generatedContent,
-        reason: evaluation.reason,
-      });
-
-      // Ensure logger.info was called with 'Failed to save example'
-      expect(mockLogger.info).toHaveBeenCalledWith("Failed to save example");
     });
   });
 });

@@ -3,7 +3,7 @@
 @layer components {
   .narration {
     .titlebar {
-      @apply flex justify-start content-center justify-items-center items-baseline gap-3;
+      @apply inline-flex justify-start content-center justify-items-center items-baseline gap-3 relative;
 
       button {
         @apply hover:drop-shadow-md opacity-50 hover:opacity-100 no-underline h-4 w-4;
@@ -18,11 +18,31 @@
       }
     }
 
+    svg.success {
+      @apply text-green-600 max-h-8;
+    }
+
     .spinner-wrapper {
       @apply p-6 flex justify-center;
 
       .spinner {
         @apply h-12 w-12 rounded-full border-2 border-slate-400 border-r-transparent animate-spin;
+      }
+    }
+
+    .reason-popup {
+      @apply absolute flex items-center gap-2 z-10 border border-slate-200 rounded-md shadow-2xl -bottom-7 p-2 -right-36 bg-white min-w-96 opacity-0 transition-opacity duration-150;
+
+      &.saved {
+        @apply flex justify-center h-12;
+      }
+
+      input {
+        @apply placeholder:italic placeholder:text-sm flex-1 p-1 text-base;
+      }
+
+      &.visible {
+        @apply opacity-100;
       }
     }
   }
