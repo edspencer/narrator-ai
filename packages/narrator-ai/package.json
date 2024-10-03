@@ -9,6 +9,16 @@
   "files": [
     "dist/**"
   ],
+  "keywords": [
+    "ai",
+    "llm",
+    "vercel"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edspencer/narrator-ai.git"
+  },
+  "author": "Ed Spencer",
   "scripts": {
     "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
     "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react",

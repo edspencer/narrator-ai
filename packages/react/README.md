@@ -4,7 +4,7 @@
 
 For content creators, it lets you focus on your content itself, offloading the boring bits like "if you liked this, you might like our articles on X, Y and Z interesting" intro and outro content. It can also dynamically generate this content per-user, based on what they've been looking at or doing so far.
 
-![Narration regeneration with Narrator AI](/packages/react/docs/Narration-regeneration.gif)
+![Narration regeneration with Narrator AI](https://raw.githubusercontent.com/edspencer/narrator-ai/HEAD/packages/react/docs/Narration-regeneration.gif)
 
 Examples of where it can be used include:
 
@@ -84,7 +84,7 @@ This simple React component accomplishes a few things:
 
 And here's what it looks like when rendered:
 
-![NarrationWrapper screenshot](/packages/react/docs/Narration-example.png)
+![NarrationWrapper screenshot](https://raw.githubusercontent.com/edspencer/narrator-ai/HEAD/packages/react/docs/Narration-example.png)
 
 My actual `NarrationMarkdown` component looks like this:
 
@@ -180,7 +180,7 @@ export async function saveExample(example) {
 
 Now we can click the regenerate button to our heart's content in the UI, and see new content generations streaming in:
 
-![Narration regeneration via the UI](/packages/react/docs/Narration-regeneration.gif)
+![Narration regeneration via the UI](https://raw.githubusercontent.com/edspencer/narrator-ai/HEAD/packages/react/docs/Narration-regeneration.gif)
 
 ## Training
 
@@ -196,7 +196,7 @@ If you are using [@narrator-ai/react](https://www.npmjs.com/package/@narrator-ai
 
 If you set up your Narrator provider like shown above, you can now train directly in your UI by just clicking the thumbs up/down buttons and optionally providing a reason for your selection. The outcome is exactly the same as in the CLI, but this is more fun:
 
-![Training via the UI](/packages/react/docs/Narration-training.gif)
+![Training via the UI](https://raw.githubusercontent.com/edspencer/narrator-ai/HEAD/packages/react/docs/Narration-training.gif)
 
 ### Training in the CLI
 

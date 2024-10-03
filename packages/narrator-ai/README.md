@@ -4,7 +4,7 @@
 
 For content creators, it lets you focus on your content itself, offloading the boring bits like "if you liked this, you might like our articles on X, Y and Z interesting" intro and outro content. It can also dynamically generate this content per-user, based on what they've been looking at or doing so far.
 
-![Narration regeneration with Narrator AI](/packages/react/docs/Narration-regeneration.gif)
+![Narration regeneration with Narrator AI](https://raw.githubusercontent.com/edspencer/narrator-ai/HEAD/packages/react/docs/Narration-regeneration.gif)
 
 Examples of where it can be used include:
 
@@ -71,7 +71,7 @@ See the @narrator-ai/react docs for
 
 `NarratorAI` outputs text and optionally saves it to a file of your choice, so you can render it how you like from there. If you're using **React** you may choose to use the [@narrator-ai/react](https://www.npmjs.com/package/@narrator-ai/react) package to get some nice features out of the box:
 
-![Example of @narrator-ai/react](./docs/UI-training-example.gif)
+![Example of @narrator-ai/react](https://raw.githubusercontent.com/edspencer/narrator-ai/HEAD/packages/narrator-ai/docs/UI-training-example.gif)
 
 Check out the [@narrator-ai/react](https://www.npmjs.com/package/@narrator-ai/react) docs for more.
 
@@ -293,7 +293,9 @@ That's pretty basic. We're just looping over each published post, creating a Gen
 
 Here's the actual shell output from running this:
 
-![Training via the CLI](/packages/narrator-ai/docs/training-example.gif)
+![Training via the CLI](https://raw.githubusercontent.com/edspencer/narrator-ai/HEAD/packages/narrator-ai/docs/training-example.gif)
+
+https://raw.githubusercontent.com/edspencer/narrator-ai/HEAD/packages/narrator-ai/docs/training-example.gif
 
 It will keep doing that until it runs out of published posts to generate content for, or you ctrl-c out of it. Note that all this is doing is saving good/bad examples, calling `train` does generate text, but it won't save it as the actual text for the given docId.
 
@@ -305,7 +307,7 @@ The performance of the LLM in generating the type of content you want goes up si
 
 If you are using [@narrator-ai/react](https://www.npmjs.com/package/@narrator-ai/react), you can train Narrator directly in your UI while you're developing. This is perhaps even easier than doing it via the CLI, and has the benefit of showing you the fully rendered content in the actual context it will be shown in inside your UI:
 
-![Example of @narrator-ai/react](./docs/UI-training-example.gif)
+![Example of @narrator-ai/react](https://raw.githubusercontent.com/edspencer/narrator-ai/HEAD/packages/narrator-ai/docs/UI-training-example.gif)
 
 Check out the [@narrator-ai/react](https://www.npmjs.com/package/@narrator-ai/react) docs for more.
 
