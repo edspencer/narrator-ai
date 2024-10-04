@@ -216,16 +216,16 @@ The principal component in this package is `<Narration>`, which can be configure
 
 ```tsx
 <Narration
-  //The title that will be rendered (inside an h1 tag unless you specify a titleEl)
+  //The title that will be rendered (inside an h1 tag unless you specify a titleTag)
   title="Some Title"
   //the docId that should be shown in this component
   id="post/my-awesome-post"
   //optional CSS classes to add to the outer element
   className="border border-red-500"
-  //optional CSS class names to add to the rendered titleEl
+  //optional CSS class names to add to the rendered titleTag
   titleClassName="text-3xl"
-  //titleEl defaults to h1 but you can pass in any element type you like here
-  titleEl="h3"
+  //titleTag defaults to h1 but you can pass in any element type you like here
+  titleTag="h3"
   //if provided, the sparkle will be a link to this url
   sparkleLink="/url/to/go/when/sparkle/is/clicked"
   //if provided, the sparkle will show a tooltip when hovered
