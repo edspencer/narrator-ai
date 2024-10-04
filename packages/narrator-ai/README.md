@@ -22,7 +22,7 @@ Examples of where it can be used include:
 
 ## Installation
 
-There are 2 packages - [narrator-ai](https://www.npmjs.com/package/narrator-ai) and [@narrator-ai/react](https://www.npmjs.com/package/@narrator-ai/react). [narrator-ai](https://www.npmjs.com/package/narrator-ai) generates the meta-content for you, and [@narrator-ai/react](https://www.npmjs.com/package/@narrator-ai/react) is a collection of React components that make it easy to show, regenerate and train Narrator via your UI:
+There are 2 packages - [narrator-ai](https://www.npmjs.com/package/narrator-ai) and [@narrator-ai/react](https://www.npmjs.com/package/@narrator-ai/react). `narrator-ai` generates the meta-content for you, and [@narrator-ai/react](https://www.npmjs.com/package/@narrator-ai/react) is a collection of React components that make it easy to show, regenerate and train Narrator via your UI:
 
 ```sh
 npm install narrator-ai
@@ -294,8 +294,6 @@ That's pretty basic. We're just looping over each published post, creating a Gen
 Here's the actual shell output from running this:
 
 ![Training via the CLI](https://raw.githubusercontent.com/edspencer/narrator-ai/HEAD/packages/narrator-ai/docs/training-example.gif)
-
-https://raw.githubusercontent.com/edspencer/narrator-ai/HEAD/packages/narrator-ai/docs/training-example.gif
 
 It will keep doing that until it runs out of published posts to generate content for, or you ctrl-c out of it. Note that all this is doing is saving good/bad examples, calling `train` does generate text, but it won't save it as the actual text for the given docId.
 

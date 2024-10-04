@@ -376,9 +376,9 @@ export class Narrator {
    * Retrieves previously saved narration by document ID.
    *
    * @param docId - The document ID of the narration.
-   * @returns The narration content or false if an error occurs.
+   * @returns The narration content or false if the content is not found or could not be read.
    */
-  getNarration(docId: string) {
+  getNarration(docId: string): string | false {
     const { logger } = this;
 
     if (!this.outputDir) {
