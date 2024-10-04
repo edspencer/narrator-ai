@@ -1,5 +1,11 @@
 # @narrator-ai/react
 
+## 0.2.3
+
+### Patch Changes
+
+- 42ce153: Fixed an issue where multiple Narrations could cause duplicate tooltips
+
 ## 0.2.2
 
 ### Patch Changes
