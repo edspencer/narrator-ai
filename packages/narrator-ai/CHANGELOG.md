@@ -1,5 +1,11 @@
 # narrator-ai
 
+## 0.2.4
+
+### Patch Changes
+
+- c108955: Type fixes
+
 ## 0.2.3
 
 ### Patch Changes
