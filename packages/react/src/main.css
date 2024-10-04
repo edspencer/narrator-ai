@@ -31,7 +31,7 @@
     }
 
     .reason-popup {
-      @apply absolute flex items-center gap-2 z-10 border border-slate-200 rounded-md shadow-2xl -bottom-7 p-2 -right-36 bg-white min-w-96 opacity-0 transition-opacity duration-150;
+      @apply absolute flex items-center gap-2 z-10 border border-slate-200 rounded-md shadow-2xl -bottom-7 h-0 p-2 -right-36 bg-white min-w-96 opacity-0 transition-opacity duration-150;
 
       &.saved {
         @apply flex justify-center h-12;
@@ -42,7 +42,7 @@
       }
 
       &.visible {
-        @apply opacity-100;
+        @apply opacity-100 h-auto;
       }
     }
   }

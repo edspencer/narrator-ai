@@ -1,5 +1,8 @@
 "use client";
 
+import "react-tooltip/dist/react-tooltip.css";
+
+import { Tooltip } from "react-tooltip";
 import { useState } from "react";
 import { readStreamableValue } from "ai/rsc";
 import { getResponseType } from "./utils";
@@ -104,6 +107,7 @@ export function NarrationProvider({ children, actions = {} }: { children: React.
   return (
     <NarrationContext.Provider value={{ getContent, regenerateContent, isLoading, saveExample }}>
       {children}
+      <Tooltip anchorSelect=".narration-tooltip" place="top" />
     </NarrationContext.Provider>
   );
 }

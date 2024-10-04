@@ -1,8 +1,6 @@
 "use client";
 
-import "react-tooltip/dist/react-tooltip.css";
-
-import { Tooltip, VariantType } from "react-tooltip";
+import { VariantType } from "react-tooltip";
 import { SparklesIcon } from "@heroicons/react/24/solid";
 import { ArrowPathIcon, HandThumbUpIcon, HandThumbDownIcon, CheckIcon } from "@heroicons/react/24/outline";
 
@@ -85,7 +83,6 @@ export function Narration({
               />
             </>
           ) : null}
-          <Tooltip anchorSelect=".narration-tooltip" place="top"></Tooltip>
         </div>
       ) : null}
       {spinner ? <Spinner /> : content || children}
