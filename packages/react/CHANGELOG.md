@@ -1,5 +1,11 @@
 # @narrator-ai/react
 
+## 0.2.2
+
+### Patch Changes
+
+- c108955: Configuration docs in README
+
 ## 0.2.1
 
 ### Patch Changes
