@@ -62,7 +62,7 @@ The arguments to configure the Narrator instance.
 
 #### Defined in
 
-[Narrator.ts:266](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L266)
+[Narrator.ts:266](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L266)
 
 ## Properties
 
@@ -75,7 +75,7 @@ Used for fetching good and bad examples to guide model generation.
 
 #### Defined in
 
-[Narrator.ts:220](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L220)
+[Narrator.ts:220](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L220)
 
 ***
 
@@ -89,7 +89,7 @@ Example function signature: `(example: Example) => string`.
 
 #### Defined in
 
-[Narrator.ts:227](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L227)
+[Narrator.ts:227](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L227)
 
 ***
 
@@ -102,7 +102,7 @@ If undefined, a default logger will be used.
 
 #### Defined in
 
-[Narrator.ts:253](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L253)
+[Narrator.ts:253](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L253)
 
 ***
 
@@ -115,7 +115,7 @@ If undefined, a default model (e.g., `openai("gpt-4o")`) will be used.
 
 #### Defined in
 
-[Narrator.ts:240](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L240)
+[Narrator.ts:240](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L240)
 
 ***
 
@@ -128,7 +128,7 @@ If undefined, outputs will not be saved automatically.
 
 #### Defined in
 
-[Narrator.ts:214](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L214)
+[Narrator.ts:214](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L214)
 
 ***
 
@@ -142,7 +142,7 @@ Example function signature: `(docId: string) => string`.
 
 #### Defined in
 
-[Narrator.ts:247](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L247)
+[Narrator.ts:247](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L247)
 
 ***
 
@@ -155,7 +155,7 @@ Defaults to 1 if not provided.
 
 #### Defined in
 
-[Narrator.ts:208](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L208)
+[Narrator.ts:208](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L208)
 
 ***
 
@@ -169,7 +169,7 @@ If undefined, the default temperature is used.
 
 #### Defined in
 
-[Narrator.ts:234](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L234)
+[Narrator.ts:234](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L234)
 
 ***
 
@@ -182,7 +182,7 @@ Used to classify examples as good or bad based on feedback or custom logic.
 
 #### Defined in
 
-[Narrator.ts:259](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L259)
+[Narrator.ts:259](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L259)
 
 ## Methods
 
@@ -210,7 +210,7 @@ The generated text content.
 
 #### Defined in
 
-[Narrator.ts:312](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L312)
+[Narrator.ts:312](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L312)
 
 ***
 
@@ -234,7 +234,7 @@ The group key.
 
 #### Defined in
 
-[Narrator.ts:518](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L518)
+[Narrator.ts:518](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L518)
 
 ***
 
@@ -258,7 +258,7 @@ The extracted key.
 
 #### Defined in
 
-[Narrator.ts:528](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L528)
+[Narrator.ts:528](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L528)
 
 ***
 
@@ -290,7 +290,7 @@ An array of examples.
 
 #### Defined in
 
-[Narrator.ts:490](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L490)
+[Narrator.ts:490](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L490)
 
 ***
 
@@ -314,7 +314,7 @@ The narration content or false if the content is not found or could not be read.
 
 #### Defined in
 
-[Narrator.ts:396](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L396)
+[Narrator.ts:396](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L396)
 
 ***
 
@@ -338,7 +338,7 @@ The parsed YAML content or an empty array in case of an error.
 
 #### Defined in
 
-[Narrator.ts:474](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L474)
+[Narrator.ts:474](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L474)
 
 ***
 
@@ -362,7 +362,7 @@ A boolean indicating success or failure of the save operation.
 
 #### Defined in
 
-[Narrator.ts:426](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L426)
+[Narrator.ts:426](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L426)
 
 ***
 
@@ -386,7 +386,7 @@ A boolean indicating success or failure of the save operation.
 
 #### Defined in
 
-[Narrator.ts:368](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L368)
+[Narrator.ts:368](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L368)
 
 ***
 
@@ -409,4 +409,4 @@ The generation task to be processed.
 
 #### Defined in
 
-[Narrator.ts:294](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L294)
+[Narrator.ts:294](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Narrator.ts#L294)

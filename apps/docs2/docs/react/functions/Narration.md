@@ -46,4 +46,4 @@ const NarrationPage = () => {
 
 ## Defined in
 
-[Narration.tsx:86](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/react/src/Narration.tsx#L86)
+[Narration.tsx:86](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/react/src/Narration.tsx#L86)

@@ -81,7 +81,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: "img/docusaurus-social-card.jpg",
+    // image: "img/docusaurus-social-card.jpg",
     navbar: {
       title: "NarratorAI",
       logo: {
@@ -90,9 +90,10 @@ const config: Config = {
       },
       items: [
         {
-          to: "/",
           position: "left",
           label: "Docs",
+          type: "docSidebar",
+          sidebarId: "docs",
         },
         {
           to: "/api/classes/Narrator",
@@ -118,8 +119,12 @@ const config: Config = {
           title: "Docs",
           items: [
             {
-              label: "Tutorial",
-              to: "/docs/intro",
+              label: "Getting Started",
+              to: "/",
+            },
+            {
+              label: "Narrator API",
+              to: "/api/classes/Narrator",
             },
           ],
         },
@@ -145,7 +150,7 @@ const config: Config = {
           items: [
             {
               label: "Blog",
-              to: "/blog",
+              to: "https://edspencer.net/blog",
             },
             {
               label: "GitHub",

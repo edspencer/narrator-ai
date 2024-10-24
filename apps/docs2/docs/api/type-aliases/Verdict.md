@@ -4,4 +4,4 @@
 
 ## Defined in
 
-[Trainer.ts:6](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Trainer.ts#L6)
+[Trainer.ts:6](https://github.com/edspencer/narrator-ai/blob/2638f4692e0fe7ed51a1a126401e7368094e9587/packages/narrator-ai/src/Trainer.ts#L6)
