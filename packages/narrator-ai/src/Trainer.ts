@@ -6,11 +6,28 @@ import { defaultTrainerLogger } from "./logger";
 export type Verdict = "good" | "bad";
 export type Evaluation = { choice: "save"; verdict: Verdict; reason?: string } | { choice: "skip" };
 
+/**
+ * Interface representing a Trainer that evaluates a generation task.
+ */
 export interface Trainer {
+  /**
+   * Evaluate a generation task and return an evaluation.
+   * @param task The generation task to evaluate.
+   * @param content The generated content.
+   * @returns The evaluation of the generated content.
+   */
   evaluate(task: GenerationTask, content: string): Promise<Evaluation>;
 }
 
+/**
+ * The `HumanTrainer` class implements the `Trainer` interface and provides
+ * methods for allowing a human to evaluate the generated content as either good or
+ * bad, with an optional reason. Expected input is from the console.
+ */
 export class HumanTrainer implements Trainer {
+  /**
+   * The logger instance to use for logging.
+   */
   logger: any;
 
   constructor(params: { logger: any } = { logger: defaultTrainerLogger }) {

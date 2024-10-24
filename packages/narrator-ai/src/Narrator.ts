@@ -237,16 +237,7 @@ export class Narrator {
   /**
    * Creates a new instance of the Narrator class.
    *
-   * @param {Object} args - The argument object.
-   * @param {number} [args.parallel] - Number of parallel processes to use when running generateMulti (optional).
-   * @param {string} [args.outputDir] - Directory where generated outputs will be saved (optional).
-   * @param {Function} [args.outputFilename] - Function to generate the output filename based on the document ID (optional).
-   * @param {string} [args.examplesDir] - Directory where example YAML files are stored (optional).
-   * @param {Function} [args.exampleTemplate=defaultExampleTemplate] - Function to format examples (optional, default is `defaultExampleTemplate`).
-   * @param {number} [args.temperature=0.9] - Temperature for the model generation (optional, default is 0.9).
-   * @param {any} [args.model=openai("gpt-4o")] - The model to use for text generation (optional, default is `openai("gpt-4o")`).
-   * @param {winston.Logger} [args.logger=defaultNarratorLogger] - Custom logger instance (optional, default is `defaultNarratorLogger`).
-   * @param {Trainer} [args.trainer=new HumanTrainer()] - Trainer instance to evaluate generated examples (optional, default is a new instance of `HumanTrainer`).
+   * @param {NarratorArgs} args - The arguments to configure the Narrator instance.
    */
   constructor({
     parallel,
