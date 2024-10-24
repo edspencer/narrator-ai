@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-api/classes/Narrator" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.5.2">
+<title data-rh="true">Class: Narrator | NarratorAI</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://edspencer.github.io/api/classes/Narrator"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Class: Narrator | NarratorAI"><meta data-rh="true" name="description" content="Narrator generates meta-content narrations based on other content. It shines at reading and"><meta data-rh="true" property="og:description" content="Narrator generates meta-content narrations based on other content. It shines at reading and"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://edspencer.github.io/api/classes/Narrator"><link data-rh="true" rel="alternate" href="https://edspencer.github.io/api/classes/Narrator" hreflang="en"><link data-rh="true" rel="alternate" href="https://edspencer.github.io/api/classes/Narrator" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.f71b67dc.css">
+<script src="/assets/js/runtime~main.18b054b1.js" defer="defer"></script>
+<script src="/assets/js/main.c76e39d3.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/NarratorAI-logo.png" alt="NarratorAI Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/NarratorAI-logo.png" alt="NarratorAI Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">NarratorAI</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/">Docs</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/api/classes/Narrator">API Reference</a><a class="navbar__item navbar__link" href="/react/functions/createNarrator">React Reference</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/edspencer/narrator-ai" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/">Documentation</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/api/classes/Narrator">narrator-ai</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/api/classes/Narrator">Narrator</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/api/interfaces/NarratorArgs">Types</a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/react/functions/Narration">@narrator-ai/react</a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">narrator-ai</span><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Narrator</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Class: Narrator</h1></header>
+<p>Narrator generates meta-content narrations based on other content. It shines at reading and
+understanding your existing content like articles, help pages, blog posts, etc, and
+generating short, friendly summaries that tell the reader what content may be most useful to them.</p>
+<p>All of the configurations for Narrator are optional, but if you want to generate and save content you
+can pass in <code>outputDir</code> and (optionally) <code>outputFilename</code> to have Narrator automatically save its
+generations for you. For example, if we want to save our generated content as <code>.md</code> files in
+the <code>./editorial</code> directory, we can configure it like this:</p>
+<div class="language-tsx codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-tsx codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">export</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> narrator </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">new</span><span class="token plain"> </span><span class="token class-name">Narrator</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function-variable function" style="color:#d73a49">outputFilename</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">docId</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token arrow operator" style="color:#393A34">=&gt;</span><span class="token plain"> </span><span class="token template-string template-punctuation string" style="color:#e3116c">`</span><span class="token template-string interpolation interpolation-punctuation punctuation" style="color:#393A34">${</span><span class="token template-string interpolation">docId</span><span class="token template-string interpolation interpolation-punctuation punctuation" style="color:#393A34">}</span><span class="token template-string string" style="color:#e3116c">.md</span><span class="token template-string template-punctuation string" style="color:#e3116c">`</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  outputDir</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> path</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">join</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">process</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">cwd</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;editorial&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Now we can generate some content, which in this case will be saved to <code>./editorial/tag/ai.md</code>
+(directories will be created for you):</p>
+<div class="language-tsx codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-tsx codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> content </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">await</span><span class="token plain"> narrator</span><span class="token punctuation" style="color:#393A34">.</span><span class="token method function property-access" style="color:#d73a49">generate</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    docId</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;tag/ai&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    suffix</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Please reply with only the markdown you generate&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">//suffix is optional</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    prompt</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token template-string template-punctuation string" style="color:#e3116c">`</span><span class="token template-string string" style="color:#e3116c"></span><br></span><span class="token-line" style="color:#393A34"><span class="token template-string string" style="color:#e3116c">These are summaries of my most recent articles about AI. Your task is to generate a 2-3 sentence</span><br></span><span class="token-line" style="color:#393A34"><span class="token template-string string" style="color:#e3116c">introduction that tells readers at-a-glance what I&#x27;ve been writing about. Please generate markdown,</span><br></span><span class="token-line" style="color:#393A34"><span class="token template-string string" style="color:#e3116c">and include links to the articles. Do not use triple backticks or section headings in your response.</span><br></span><span class="token-line" style="color:#393A34"><span class="token template-string string" style="display:inline-block;color:#e3116c"></span><br></span><span class="token-line" style="color:#393A34"><span class="token template-string string" style="color:#e3116c">&lt;&lt;Articles go here&gt;&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token template-string string" style="color:#e3116c"></span><span class="token template-string template-punctuation string" style="color:#e3116c">`</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> save</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>This will generate content for you and save it according to the configuration you provided. You can set
+<code>docId</code> to whatever you want - in this case we&#x27;re generating intro text for a blog that contains
+<a href="https://edspencer.net/blog/tag/ai" target="_blank" rel="noopener noreferrer">articles about AI</a>. If you don&#x27;t specify a <code>model</code> it will default
+to using OpenAI&#x27;s &quot;gpt-4o&quot;, but you can pass in any model provided by the
+<a href="https://sdk.vercel.ai/docs/introduction" target="_blank" rel="noopener noreferrer">Vercel AI SDK</a>.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="constructors">Constructors<a href="#constructors" class="hash-link" aria-label="Direct link to Constructors" title="Direct link to Constructors">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="new-narrator">new Narrator()<a href="#new-narrator" class="hash-link" aria-label="Direct link to new Narrator()" title="Direct link to new Narrator()">​</a></h3>
+<blockquote>
+<p><strong>new Narrator</strong>(<code>args</code>): <a href="/api/classes/Narrator"><code>Narrator</code></a></p>
+</blockquote>
+<p>Creates a new instance of the Narrator class.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="parameters">Parameters<a href="#parameters" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters">​</a></h4>
+<p>• <strong>args</strong>: <a href="/api/interfaces/NarratorArgs"><code>NarratorArgs</code></a></p>
+<p>The arguments to configure the Narrator instance.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns">Returns<a href="#returns" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p><a href="/api/classes/Narrator"><code>Narrator</code></a></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in">Defined in<a href="#defined-in" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L266" target="_blank" rel="noopener noreferrer">Narrator.ts:266</a></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="properties">Properties<a href="#properties" class="hash-link" aria-label="Direct link to Properties" title="Direct link to Properties">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="examplesdir">examplesDir<a href="#examplesdir" class="hash-link" aria-label="Direct link to examplesDir" title="Direct link to examplesDir">​</a></h3>
+<blockquote>
+<p><strong>examplesDir</strong>: <code>undefined</code> | <code>string</code></p>
+</blockquote>
+<p>Directory where example YAML files are stored.
+Used for fetching good and bad examples to guide model generation.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-1">Defined in<a href="#defined-in-1" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L220" target="_blank" rel="noopener noreferrer">Narrator.ts:220</a></p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="exampletemplate">exampleTemplate<a href="#exampletemplate" class="hash-link" aria-label="Direct link to exampleTemplate" title="Direct link to exampleTemplate">​</a></h3>
+<blockquote>
+<p><strong>exampleTemplate</strong>: <code>Function</code></p>
+</blockquote>
+<p>Function to format examples.
+This function is applied to examples before they are used in prompts.
+Example function signature: <code>(example: Example) =&gt; string</code>.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-2">Defined in<a href="#defined-in-2" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L227" target="_blank" rel="noopener noreferrer">Narrator.ts:227</a></p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="logger">logger<a href="#logger" class="hash-link" aria-label="Direct link to logger" title="Direct link to logger">​</a></h3>
+<blockquote>
+<p><strong>logger</strong>: <code>Logger</code></p>
+</blockquote>
+<p>Custom logger instance for logging (e.g., a Winston logger).
+If undefined, a default logger will be used.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-3">Defined in<a href="#defined-in-3" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L253" target="_blank" rel="noopener noreferrer">Narrator.ts:253</a></p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="model">model<a href="#model" class="hash-link" aria-label="Direct link to model" title="Direct link to model">​</a></h3>
+<blockquote>
+<p><strong>model</strong>: <code>any</code></p>
+</blockquote>
+<p>The model used for text generation, such as an instance of OpenAI&#x27;s GPT models.
+If undefined, a default model (e.g., <code>openai(&quot;gpt-4o&quot;)</code>) will be used.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-4">Defined in<a href="#defined-in-4" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L240" target="_blank" rel="noopener noreferrer">Narrator.ts:240</a></p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="outputdir">outputDir<a href="#outputdir" class="hash-link" aria-label="Direct link to outputDir" title="Direct link to outputDir">​</a></h3>
+<blockquote>
+<p><strong>outputDir</strong>: <code>undefined</code> | <code>string</code></p>
+</blockquote>
+<p>Directory where generated outputs will be saved.
+If undefined, outputs will not be saved automatically.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-5">Defined in<a href="#defined-in-5" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L214" target="_blank" rel="noopener noreferrer">Narrator.ts:214</a></p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="outputfilename">outputFilename<a href="#outputfilename" class="hash-link" aria-label="Direct link to outputFilename" title="Direct link to outputFilename">​</a></h3>
+<blockquote>
+<p><strong>outputFilename</strong>: <code>Function</code></p>
+</blockquote>
+<p>Function to generate output filenames based on the document ID.
+If undefined, filenames are generated using the document ID by default.
+Example function signature: <code>(docId: string) =&gt; string</code>.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-6">Defined in<a href="#defined-in-6" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L247" target="_blank" rel="noopener noreferrer">Narrator.ts:247</a></p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="parallel">parallel<a href="#parallel" class="hash-link" aria-label="Direct link to parallel" title="Direct link to parallel">​</a></h3>
+<blockquote>
+<p><strong>parallel</strong>: <code>number</code> = <code>1</code></p>
+</blockquote>
+<p>Number of parallel processes to use when running <code>generateMulti</code>.
+Defaults to 1 if not provided.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-7">Defined in<a href="#defined-in-7" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L208" target="_blank" rel="noopener noreferrer">Narrator.ts:208</a></p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="temperature">temperature<a href="#temperature" class="hash-link" aria-label="Direct link to temperature" title="Direct link to temperature">​</a></h3>
+<blockquote>
+<p><strong>temperature</strong>: <code>any</code></p>
+</blockquote>
+<p>Temperature for the model generation.
+Controls the randomness of the generated output, where a higher value results in more varied responses.
+If undefined, the default temperature is used.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-8">Defined in<a href="#defined-in-8" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L234" target="_blank" rel="noopener noreferrer">Narrator.ts:234</a></p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="trainer">trainer<a href="#trainer" class="hash-link" aria-label="Direct link to trainer" title="Direct link to trainer">​</a></h3>
+<blockquote>
+<p><strong>trainer</strong>: <a href="/api/interfaces/Trainer"><code>Trainer</code></a></p>
+</blockquote>
+<p>Trainer instance responsible for evaluating generated examples.
+Used to classify examples as good or bad based on feedback or custom logic.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-9">Defined in<a href="#defined-in-9" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L259" target="_blank" rel="noopener noreferrer">Narrator.ts:259</a></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="methods">Methods<a href="#methods" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="generate">generate()<a href="#generate" class="hash-link" aria-label="Direct link to generate()" title="Direct link to generate()">​</a></h3>
+<blockquote>
+<p><strong>generate</strong>(<code>task</code>, <code>options</code>): <code>Promise</code>&lt;<code>string</code> | <code>AsyncIterableStream</code>&lt;<code>string</code>&gt;&gt;</p>
+</blockquote>
+<p>Generates content for the provided task based on the given options.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="parameters-1">Parameters<a href="#parameters-1" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters">​</a></h4>
+<p>• <strong>task</strong>: <a href="/api/type-aliases/GenerationTask"><code>GenerationTask</code></a></p>
+<p>The task containing the prompt and document ID.</p>
+<p>• <strong>options</strong>: <a href="/api/interfaces/GenerateOptions"><code>GenerateOptions</code></a> = <code>{}</code></p>
+<p>Optional settings for generation (temperature, model, etc.).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-1">Returns<a href="#returns-1" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p><code>Promise</code>&lt;<code>string</code> | <code>AsyncIterableStream</code>&lt;<code>string</code>&gt;&gt;</p>
+<p>The generated text content.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-10">Defined in<a href="#defined-in-10" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L312" target="_blank" rel="noopener noreferrer">Narrator.ts:312</a></p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="getexamplegroup">getExampleGroup()<a href="#getexamplegroup" class="hash-link" aria-label="Direct link to getExampleGroup()" title="Direct link to getExampleGroup()">​</a></h3>
+<blockquote>
+<p><strong>getExampleGroup</strong>(<code>docId</code>?): <code>undefined</code> | <code>string</code></p>
+</blockquote>
+<p>Extracts the first part of a document ID, representing the example group.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="parameters-2">Parameters<a href="#parameters-2" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters">​</a></h4>
+<p>• <strong>docId?</strong>: <code>string</code></p>
+<p>The document ID.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-2">Returns<a href="#returns-2" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p><code>undefined</code> | <code>string</code></p>
+<p>The group key.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-11">Defined in<a href="#defined-in-11" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L518" target="_blank" rel="noopener noreferrer">Narrator.ts:518</a></p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="getexamplekey">getExampleKey()<a href="#getexamplekey" class="hash-link" aria-label="Direct link to getExampleKey()" title="Direct link to getExampleKey()">​</a></h3>
+<blockquote>
+<p><strong>getExampleKey</strong>(<code>docId</code>): <code>string</code></p>
+</blockquote>
+<p>Extracts the key from a document ID.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="parameters-3">Parameters<a href="#parameters-3" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters">​</a></h4>
+<p>• <strong>docId</strong>: <code>string</code></p>
+<p>The document ID.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-3">Returns<a href="#returns-3" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p><code>string</code></p>
+<p>The extracted key.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-12">Defined in<a href="#defined-in-12" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L528" target="_blank" rel="noopener noreferrer">Narrator.ts:528</a></p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="getexamplesfortask">getExamplesForTask()<a href="#getexamplesfortask" class="hash-link" aria-label="Direct link to getExamplesForTask()" title="Direct link to getExamplesForTask()">​</a></h3>
+<blockquote>
+<p><strong>getExamplesForTask</strong>(<code>task</code>, <code>verdict</code>, <code>limit</code>?): <code>Promise</code>&lt;<a href="/api/type-aliases/Example"><code>Example</code></a>[]&gt;</p>
+</blockquote>
+<p>Retrieves examples for a specific task based on the verdict (good or bad).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="parameters-4">Parameters<a href="#parameters-4" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters">​</a></h4>
+<p>• <strong>task</strong>: <a href="/api/type-aliases/GenerationTask"><code>GenerationTask</code></a></p>
+<p>The generation task for which examples are retrieved.</p>
+<p>• <strong>verdict</strong>: <code>string</code></p>
+<p>The type of examples to retrieve (&quot;good&quot; or &quot;bad&quot;).</p>
+<p>• <strong>limit?</strong>: <code>number</code></p>
+<p>The maximum number of examples to retrieve (optional).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-4">Returns<a href="#returns-4" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p><code>Promise</code>&lt;<a href="/api/type-aliases/Example"><code>Example</code></a>[]&gt;</p>
+<p>An array of examples.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-13">Defined in<a href="#defined-in-13" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L490" target="_blank" rel="noopener noreferrer">Narrator.ts:490</a></p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="getnarration">getNarration()<a href="#getnarration" class="hash-link" aria-label="Direct link to getNarration()" title="Direct link to getNarration()">​</a></h3>
+<blockquote>
+<p><strong>getNarration</strong>(<code>docId</code>): <code>string</code> | <code>false</code></p>
+</blockquote>
+<p>Retrieves previously saved narration by document ID.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="parameters-5">Parameters<a href="#parameters-5" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters">​</a></h4>
+<p>• <strong>docId</strong>: <code>string</code></p>
+<p>The document ID of the narration.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-5">Returns<a href="#returns-5" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p><code>string</code> | <code>false</code></p>
+<p>The narration content or false if the content is not found or could not be read.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-14">Defined in<a href="#defined-in-14" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L396" target="_blank" rel="noopener noreferrer">Narrator.ts:396</a></p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="readexampleyaml">readExampleYaml()<a href="#readexampleyaml" class="hash-link" aria-label="Direct link to readExampleYaml()" title="Direct link to readExampleYaml()">​</a></h3>
+<blockquote>
+<p><strong>readExampleYaml</strong>(<code>filename</code>): <code>any</code></p>
+</blockquote>
+<p>Reads a YAML file and parses its contents.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="parameters-6">Parameters<a href="#parameters-6" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters">​</a></h4>
+<p>• <strong>filename</strong>: <code>string</code></p>
+<p>The path to the YAML file.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-6">Returns<a href="#returns-6" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p><code>any</code></p>
+<p>The parsed YAML content or an empty array in case of an error.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-15">Defined in<a href="#defined-in-15" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L474" target="_blank" rel="noopener noreferrer">Narrator.ts:474</a></p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="saveexample">saveExample()<a href="#saveexample" class="hash-link" aria-label="Direct link to saveExample()" title="Direct link to saveExample()">​</a></h3>
+<blockquote>
+<p><strong>saveExample</strong>(<code>args</code>): <code>Promise</code>&lt;<code>boolean</code>&gt;</p>
+</blockquote>
+<p>Saves the evaluation result as an example for future reference.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="parameters-7">Parameters<a href="#parameters-7" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters">​</a></h4>
+<p>• <strong>args</strong>: <a href="/api/interfaces/SaveExampleArgs"><code>SaveExampleArgs</code></a></p>
+<p>The arguments for saving the example (document ID, content, etc.).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-7">Returns<a href="#returns-7" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p><code>Promise</code>&lt;<code>boolean</code>&gt;</p>
+<p>A boolean indicating success or failure of the save operation.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-16">Defined in<a href="#defined-in-16" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L426" target="_blank" rel="noopener noreferrer">Narrator.ts:426</a></p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="savenarration">saveNarration()<a href="#savenarration" class="hash-link" aria-label="Direct link to saveNarration()" title="Direct link to saveNarration()">​</a></h3>
+<blockquote>
+<p><strong>saveNarration</strong>(<code>narration</code>): <code>boolean</code></p>
+</blockquote>
+<p>Saves the generated narration to the output directory.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="parameters-8">Parameters<a href="#parameters-8" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters">​</a></h4>
+<p>• <strong>narration</strong>: <a href="/api/type-aliases/Narration"><code>Narration</code></a></p>
+<p>The narration object containing document ID and content.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-8">Returns<a href="#returns-8" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p><code>boolean</code></p>
+<p>A boolean indicating success or failure of the save operation.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-17">Defined in<a href="#defined-in-17" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L368" target="_blank" rel="noopener noreferrer">Narrator.ts:368</a></p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="train">train()<a href="#train" class="hash-link" aria-label="Direct link to train()" title="Direct link to train()">​</a></h3>
+<blockquote>
+<p><strong>train</strong>(<code>task</code>): <code>Promise</code>&lt;<code>undefined</code> | <code>boolean</code>&gt;</p>
+</blockquote>
+<p>Trains the Narrator using a task and evaluates the result.
+If the result is marked for saving, it will be saved.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="parameters-9">Parameters<a href="#parameters-9" class="hash-link" aria-label="Direct link to Parameters" title="Direct link to Parameters">​</a></h4>
+<p>• <strong>task</strong>: <a href="/api/type-aliases/GenerationTask"><code>GenerationTask</code></a></p>
+<p>The generation task to be processed.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="returns-9">Returns<a href="#returns-9" class="hash-link" aria-label="Direct link to Returns" title="Direct link to Returns">​</a></h4>
+<p><code>Promise</code>&lt;<code>undefined</code> | <code>boolean</code>&gt;</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="defined-in-18">Defined in<a href="#defined-in-18" class="hash-link" aria-label="Direct link to Defined in" title="Direct link to Defined in">​</a></h4>
+<p><a href="https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L294" target="_blank" rel="noopener noreferrer">Narrator.ts:294</a></p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/configuration"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Configuration</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/api/interfaces/NarratorArgs"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">NarratorArgs</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#constructors" class="table-of-contents__link toc-highlight">Constructors</a><ul><li><a href="#new-narrator" class="table-of-contents__link toc-highlight">new Narrator()</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#examplesdir" class="table-of-contents__link toc-highlight">examplesDir</a></li><li><a href="#exampletemplate" class="table-of-contents__link toc-highlight">exampleTemplate</a></li><li><a href="#logger" class="table-of-contents__link toc-highlight">logger</a></li><li><a href="#model" class="table-of-contents__link toc-highlight">model</a></li><li><a href="#outputdir" class="table-of-contents__link toc-highlight">outputDir</a></li><li><a href="#outputfilename" class="table-of-contents__link toc-highlight">outputFilename</a></li><li><a href="#parallel" class="table-of-contents__link toc-highlight">parallel</a></li><li><a href="#temperature" class="table-of-contents__link toc-highlight">temperature</a></li><li><a href="#trainer" class="table-of-contents__link toc-highlight">trainer</a></li></ul></li><li><a href="#methods" class="table-of-contents__link toc-highlight">Methods</a><ul><li><a href="#generate" class="table-of-contents__link toc-highlight">generate()</a></li><li><a href="#getexamplegroup" class="table-of-contents__link toc-highlight">getExampleGroup()</a></li><li><a href="#getexamplekey" class="table-of-contents__link toc-highlight">getExampleKey()</a></li><li><a href="#getexamplesfortask" class="table-of-contents__link toc-highlight">getExamplesForTask()</a></li><li><a href="#getnarration" class="table-of-contents__link toc-highlight">getNarration()</a></li><li><a href="#readexampleyaml" class="table-of-contents__link toc-highlight">readExampleYaml()</a></li><li><a href="#saveexample" class="table-of-contents__link toc-highlight">saveExample()</a></li><li><a href="#savenarration" class="table-of-contents__link toc-highlight">saveNarration()</a></li><li><a href="#train" class="table-of-contents__link toc-highlight">train()</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/">Getting Started</a></li><li class="footer__item"><a class="footer__link-item" href="/api/classes/Narrator">Narrator API</a></li></ul></div><div class="col footer__col"><div class="footer__title">Contact the Author</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://edspencer.net" target="_blank" rel="noopener noreferrer" class="footer__link-item">Blog<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://www.linkedin.com/in/edspencer85/" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://twitter.com/edspencer" target="_blank" rel="noopener noreferrer" class="footer__link-item">Twitter<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://edspencer.net/blog" target="_blank" rel="noopener noreferrer" class="footer__link-item">Blog</a></li><li class="footer__item"><a href="https://github.com/edspencer/narrator-ai" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 Ed Spencer. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
