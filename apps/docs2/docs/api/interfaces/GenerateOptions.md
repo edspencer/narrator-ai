@@ -14,7 +14,7 @@ These examples help steer the model away from undesired outputs.
 
 #### Defined in
 
-[Narrator.ts:109](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L109)
+[Narrator.ts:109](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L109)
 
 ***
 
@@ -28,7 +28,7 @@ These examples help the model understand what the ideal output looks like.
 
 #### Defined in
 
-[Narrator.ts:102](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L102)
+[Narrator.ts:102](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L102)
 
 ***
 
@@ -42,7 +42,7 @@ This can be used to override the default model.
 
 #### Defined in
 
-[Narrator.ts:89](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L89)
+[Narrator.ts:89](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L89)
 
 ***
 
@@ -55,7 +55,7 @@ Whether the generated content should be saved automatically after the generation
 
 #### Defined in
 
-[Narrator.ts:95](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L95)
+[Narrator.ts:95](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L95)
 
 ***
 
@@ -69,7 +69,7 @@ before completion.
 
 #### Defined in
 
-[Narrator.ts:116](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L116)
+[Narrator.ts:116](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L116)
 
 ***
 
@@ -84,4 +84,4 @@ A higher temperature (closer to 1) will produce more random outputs, while a low
 
 #### Defined in
 
-[Narrator.ts:82](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L82)
+[Narrator.ts:82](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L82)

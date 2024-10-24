@@ -1,9 +1,10 @@
 ---
 sidebar_position: 1
 title: NarratorAI Introduction
+slug: /
 ---
 
-# Introduction
+# NarratorAI: Introduction
 
 **NarratorAI** is a **Node JS** & **React** package that makes it easy to generate meta-content "narration" based on other content. It shines at reading and understanding your existing content like articles, help pages, blog posts, etc, and generating short, friendly summaries that tell the reader what content may be most useful to them.
 
@@ -40,8 +41,8 @@ The React package is optional and it's easy to roll your own. Use it to get star
 
 There are 2 sides of NarratorAI - generation and rendering. See these docs for more on each:
 
-- [Generating Content](/docs/generating)
-- [Rendering Content](/docs/rendering)
+- [Generating Content](/generation)
+- [Rendering Content](/rendering)
 
 ## Live Demo
 

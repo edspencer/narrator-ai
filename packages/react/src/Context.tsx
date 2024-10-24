@@ -8,11 +8,12 @@ import { readStreamableValue } from "ai/rsc";
 import { getResponseType } from "./utils";
 
 import { createContext, useContext } from "react";
+import { NarrationActions } from "./Provider";
 
 /**
  * Interface representing the content and operations for narration.
  */
-export interface NarrationContentType {
+export interface NarrationContextType {
   /**
    * Retrieves the content associated with the given ID. This could be the already-
    * generated content, or it could be new content streaming in.
@@ -44,10 +45,10 @@ export interface NarrationContentType {
    * @param example - The example content to be saved.
    * @returns A promise that resolves to a boolean indicating whether the save was successful.
    */
-  saveExample: (example: any) => Promise<boolean>;
+  saveExample?: (example: any) => Promise<boolean>;
 }
 
-export const NarrationContext = createContext<NarrationContentType | undefined>(undefined);
+export const NarrationContext = createContext<NarrationContextType | undefined>(undefined);
 
 export const useNarrationContext = () => useContext(NarrationContext);
 
@@ -56,24 +57,31 @@ export const useNarrationContext = () => useContext(NarrationContext);
  *
  * @param {Object} props - The properties object.
  * @param {React.ReactNode} props.children - The child components that will have access to the context.
- * @param {Object} [props.actions={}] - Optional actions that can be performed within the provider.
- * @param {Function} [props.actions.saveExample] - Function to save an example narration.
- * @param {Function} [props.actions.regenerateNarration] - Function to regenerate a narration based on an ID.
+ * @param {NarrationActions} [props.actions={}] - Optional actions that can be performed within the provider.
  *
  * @returns {JSX.Element} The provider component that wraps its children with narration context.
- *
- * @context {Function} getContent - Retrieves the narration content for a given ID.
- * @context {Function} regenerateContent - Regenerates the narration content for a given ID.
- * @context {Function} isLoading - Checks if the narration content is currently being regenerated for a given ID.
- * @context {Function} saveExample - Saves an example narration.
  */
-export function NarrationProvider({ children, actions = {} }: { children: React.ReactNode; actions?: any }) {
+export function NarrationProvider({
+  children,
+  actions = {},
+}: {
+  children: React.ReactNode;
+  actions?: NarrationActions;
+}) {
   const [narrationStreams, setNarrationStreams] = useState<{ [key: string]: string }>({});
   const [loadingStates, setLoadingState] = useState<{ [key: string]: boolean }>({});
 
   const { saveExample, regenerateNarration } = actions;
 
+  /**
+   * Regenerates the narration content for a given ID.
+   * @param id - The unique identifier for the content.
+   */
   const regenerateContent = async (id: string) => {
+    if (!regenerateNarration) {
+      throw new Error("regenerateNarration function is not provided");
+    }
+
     setLoadingState({ ...loadingStates, [id]: true });
     setNarrationStreams((streams) => ({ ...streams, [id]: "" }));
 
@@ -96,10 +104,18 @@ export function NarrationProvider({ children, actions = {} }: { children: React.
     setLoadingState({ ...loadingStates, [id]: false });
   };
 
+  /**
+   * Retrieve the content associated with the given ID.
+   * @param id - The unique identifier for the content.
+   */
   function getContent(id: string) {
     return narrationStreams[id] || "";
   }
 
+  /**
+   * Checks if the narration content is currently being regenerated for a given ID.
+   * @param id - The unique identifier for the content.
+   */
   function isLoading(id: string) {
     return loadingStates[id] || false;
   }

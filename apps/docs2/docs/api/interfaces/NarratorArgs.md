@@ -13,7 +13,7 @@ Directory where example YAML files are stored.
 
 #### Defined in
 
-[Narrator.ts:25](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L25)
+[Narrator.ts:25](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L25)
 
 ***
 
@@ -35,7 +35,7 @@ Takes an example object and returns a formatted string.
 
 #### Defined in
 
-[Narrator.ts:32](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L32)
+[Narrator.ts:32](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L32)
 
 ***
 
@@ -48,7 +48,7 @@ Custom logger instance for logging (e.g., Winston logger).
 
 #### Defined in
 
-[Narrator.ts:57](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L57)
+[Narrator.ts:57](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L57)
 
 ***
 
@@ -61,7 +61,7 @@ The model to use for text generation, e.g., a model from the OpenAI API.
 
 #### Defined in
 
-[Narrator.ts:45](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L45)
+[Narrator.ts:45](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L45)
 
 ***
 
@@ -74,7 +74,7 @@ Directory where generated outputs will be saved.
 
 #### Defined in
 
-[Narrator.ts:19](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L19)
+[Narrator.ts:19](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L19)
 
 ***
 
@@ -95,7 +95,7 @@ Function to generate output filenames based on the document ID.
 
 #### Defined in
 
-[Narrator.ts:51](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L51)
+[Narrator.ts:51](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L51)
 
 ***
 
@@ -108,7 +108,7 @@ Number of parallel processes to use when running generateMulti.
 
 #### Defined in
 
-[Narrator.ts:69](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L69)
+[Narrator.ts:69](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L69)
 
 ***
 
@@ -122,7 +122,7 @@ A value closer to 1 results in more randomness, closer to 0 results in more dete
 
 #### Defined in
 
-[Narrator.ts:39](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L39)
+[Narrator.ts:39](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L39)
 
 ***
 
@@ -135,4 +135,4 @@ Trainer instance responsible for evaluating generated examples.
 
 #### Defined in
 
-[Narrator.ts:63](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L63)
+[Narrator.ts:63](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L63)

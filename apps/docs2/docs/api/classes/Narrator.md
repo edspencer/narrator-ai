@@ -1,22 +1,46 @@
 # Class: Narrator
 
-A class responsible for generating content using a model,
-training on examples, and saving the results.
+Narrator generates meta-content narrations based on other content. It shines at reading and
+understanding your existing content like articles, help pages, blog posts, etc, and
+generating short, friendly summaries that tell the reader what content may be most useful to them.
 
-Example usage:
-```typescript
-const narrator = new Narrator({
-  outputDir: "./output",
-  examplesDir: "./examples",
+All of the configurations for Narrator are optional, but if you want to generate and save content you
+can pass in `outputDir` and (optionally) `outputFilename` to have Narrator automatically save its
+generations for you. For example, if we want to save our generated content as `.md` files in
+the `./editorial` directory, we can configure it like this:
+
+```tsx
+export const narrator = new Narrator({
+  outputFilename: (docId) => `${docId}.md`,
+  outputDir: path.join(process.cwd(), "editorial"),
 });
-
-const task: GenerationTask = {
-  docId: "example1",
-  prompt: "Generate a summary for this document",
-};
-
-await narrator.train(task);
 ```
+
+Now we can generate some content, which in this case will be saved to `./editorial/tag/ai.md`
+(directories will be created for you):
+
+```tsx
+const content = await narrator.generate(
+  {
+    docId: "tag/ai",
+    suffix: "Please reply with only the markdown you generate", //suffix is optional
+    prompt: `
+These are summaries of my most recent articles about AI. Your task is to generate a 2-3 sentence
+introduction that tells readers at-a-glance what I've been writing about. Please generate markdown,
+and include links to the articles. Do not use triple backticks or section headings in your response.
+
+<<Articles go here>>
+`,
+  },
+  { save: true }
+);
+```
+
+This will generate content for you and save it according to the configuration you provided. You can set
+`docId` to whatever you want - in this case we're generating intro text for a blog that contains
+[articles about AI](https://edspencer.net/blog/tag/ai). If you don't specify a `model` it will default
+to using OpenAI's "gpt-4o", but you can pass in any model provided by the
+[Vercel AI SDK](https://sdk.vercel.ai/docs/introduction).
 
 ## Constructors
 
@@ -38,7 +62,7 @@ The arguments to configure the Narrator instance.
 
 #### Defined in
 
-[Narrator.ts:242](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L242)
+[Narrator.ts:266](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L266)
 
 ## Properties
 
@@ -51,7 +75,7 @@ Used for fetching good and bad examples to guide model generation.
 
 #### Defined in
 
-[Narrator.ts:196](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L196)
+[Narrator.ts:220](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L220)
 
 ***
 
@@ -65,7 +89,7 @@ Example function signature: `(example: Example) => string`.
 
 #### Defined in
 
-[Narrator.ts:203](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L203)
+[Narrator.ts:227](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L227)
 
 ***
 
@@ -78,7 +102,7 @@ If undefined, a default logger will be used.
 
 #### Defined in
 
-[Narrator.ts:229](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L229)
+[Narrator.ts:253](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L253)
 
 ***
 
@@ -91,7 +115,7 @@ If undefined, a default model (e.g., `openai("gpt-4o")`) will be used.
 
 #### Defined in
 
-[Narrator.ts:216](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L216)
+[Narrator.ts:240](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L240)
 
 ***
 
@@ -104,7 +128,7 @@ If undefined, outputs will not be saved automatically.
 
 #### Defined in
 
-[Narrator.ts:190](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L190)
+[Narrator.ts:214](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L214)
 
 ***
 
@@ -118,7 +142,7 @@ Example function signature: `(docId: string) => string`.
 
 #### Defined in
 
-[Narrator.ts:223](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L223)
+[Narrator.ts:247](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L247)
 
 ***
 
@@ -131,7 +155,7 @@ Defaults to 1 if not provided.
 
 #### Defined in
 
-[Narrator.ts:184](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L184)
+[Narrator.ts:208](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L208)
 
 ***
 
@@ -145,7 +169,7 @@ If undefined, the default temperature is used.
 
 #### Defined in
 
-[Narrator.ts:210](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L210)
+[Narrator.ts:234](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L234)
 
 ***
 
@@ -158,7 +182,7 @@ Used to classify examples as good or bad based on feedback or custom logic.
 
 #### Defined in
 
-[Narrator.ts:235](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L235)
+[Narrator.ts:259](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L259)
 
 ## Methods
 
@@ -186,7 +210,7 @@ The generated text content.
 
 #### Defined in
 
-[Narrator.ts:288](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L288)
+[Narrator.ts:312](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L312)
 
 ***
 
@@ -210,7 +234,7 @@ The group key.
 
 #### Defined in
 
-[Narrator.ts:494](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L494)
+[Narrator.ts:518](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L518)
 
 ***
 
@@ -234,7 +258,7 @@ The extracted key.
 
 #### Defined in
 
-[Narrator.ts:504](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L504)
+[Narrator.ts:528](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L528)
 
 ***
 
@@ -266,7 +290,7 @@ An array of examples.
 
 #### Defined in
 
-[Narrator.ts:466](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L466)
+[Narrator.ts:490](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L490)
 
 ***
 
@@ -290,7 +314,7 @@ The narration content or false if the content is not found or could not be read.
 
 #### Defined in
 
-[Narrator.ts:372](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L372)
+[Narrator.ts:396](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L396)
 
 ***
 
@@ -314,7 +338,7 @@ The parsed YAML content or an empty array in case of an error.
 
 #### Defined in
 
-[Narrator.ts:450](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L450)
+[Narrator.ts:474](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L474)
 
 ***
 
@@ -338,7 +362,7 @@ A boolean indicating success or failure of the save operation.
 
 #### Defined in
 
-[Narrator.ts:402](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L402)
+[Narrator.ts:426](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L426)
 
 ***
 
@@ -362,7 +386,7 @@ A boolean indicating success or failure of the save operation.
 
 #### Defined in
 
-[Narrator.ts:344](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L344)
+[Narrator.ts:368](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L368)
 
 ***
 
@@ -385,4 +409,4 @@ The generation task to be processed.
 
 #### Defined in
 
-[Narrator.ts:270](https://github.com/edspencer/narrator-ai/blob/f6b5712122157487bf68a395c25655c7779e9bca/packages/narrator-ai/src/Narrator.ts#L270)
+[Narrator.ts:294](https://github.com/edspencer/narrator-ai/blob/a6eb3765f534f72fc19b7120983a9fa75cbc1995/packages/narrator-ai/src/Narrator.ts#L294)
