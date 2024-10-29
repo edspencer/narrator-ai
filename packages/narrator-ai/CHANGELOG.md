@@ -1,5 +1,11 @@
 # narrator-ai
 
+## 0.3.0
+
+### Minor Changes
+
+- 7939f0b: Lots of docs
+
 ## 0.2.4
 
 ### Patch Changes
