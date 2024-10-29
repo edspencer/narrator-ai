@@ -74,7 +74,7 @@ export function ReasonForm({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (reason && verdict) {
+    if (reason && verdict && saveExample) {
       const success = await saveExample({ docId, verdict, reason });
 
       if (success) {

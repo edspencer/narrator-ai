@@ -1,5 +1,7 @@
 "use client";
 
+import { ReactElement, PropsWithChildren } from "react";
+
 import { VariantType } from "react-tooltip";
 import { SparklesIcon } from "@heroicons/react/24/solid";
 import { ArrowPathIcon, HandThumbUpIcon, HandThumbDownIcon, CheckIcon } from "@heroicons/react/24/outline";
@@ -10,46 +12,91 @@ import { useState } from "react";
 import { Verdict, ReasonForm } from "./ReasonForm";
 
 /**
+ * Props for the {@link Narration} component.
+ */
+export interface NarrationProps {
+  /** The unique identifier for the narration. */
+  id: string;
+
+  /** The title of the narration. */
+  title: string;
+
+  /** Optional children elements to be rendered within the narration. */
+  children?: React.ReactNode;
+
+  /** Optional additional class names for the narration container. */
+  className?: string;
+
+  /** Optional additional class names for the title element. */
+  titleClassName?: string;
+
+  /** Optional link for the sparkle element. */
+  sparkleLink?: string;
+
+  /** Flag to show or hide the sparkle element. */
+  showSparkle?: boolean;
+
+  /** Optional text for the sparkle element. */
+  sparkleText?: string;
+
+  /** Flag to show or hide the action buttons. */
+  showActions?: boolean;
+
+  /** The HTML tag to use for the title element. */
+  titleTag?: keyof JSX.IntrinsicElements;
+}
+
+/**
  * The `Narration` component is responsible for rendering a narration section with various interactive elements.
  * It displays a title, optional sparkle link, and action buttons for regenerating narration and providing feedback.
  *
- * @param {Object} props - The properties object.
- * @param {string} props.id - The unique identifier for the narration.
- * @param {string} props.title - The title of the narration.
- * @param {string} [props.className] - Optional additional class names for the narration container.
- * @param {string} [props.titleClassName] - Optional additional class names for the title element.
- * @param {React.ReactNode} [props.children] - Optional children elements to be rendered within the narration.
- * @param {string} [props.sparkleLink] - Optional link for the sparkle element.
- * @param {boolean} [props.showSparkle=true] - Flag to show or hide the sparkle element.
- * @param {string} [props.sparkleText] - Optional text for the sparkle element.
- * @param {boolean} [props.showActions=false] - Flag to show or hide the action buttons. Defaults to false
- * @param {JSX.Element} [props.titleTag="h1"] - The HTML tag to use for the title element. Defaults to h1
+ * The actual content of the Narration should be provided as a child element. See the intro docs for more information
+ * on how to generate Narration content and examples of how to retrieve it for display.
  *
- * @returns {JSX.Element} The rendered narration component.
+ * Simple usage:
+ * ```tsx
+ * const NarrationPage = () => {
+ *   return (
+ *     <Narration id="narration-id" title="Narration Title">
+ *       <p>This is the content of the narration.</p>
+ *     </Narration>
+ *   );
+ * }
+ * ```
+ *
+ * With sparkle link and actions:
+ * ```tsx
+ * const NarrationPage = () => {
+ *   return (
+ *     <Narration
+ *       id="narration-id"
+ *       title="Narration Title"
+ *       sparkleLink="https://example.com"
+ *       sparkleText="Learn more"
+ *       showActions={true}
+ *     >
+ *         <p>This is the content of the narration.</p>
+ *     </Narration>
+ *   );
+ * }
+ * ```
+ *
+ * @category Component
  */
-export function Narration({
-  id,
-  title,
-  className,
-  children,
-  titleClassName,
-  sparkleLink,
-  showSparkle = true,
-  sparkleText,
-  showActions = false,
-  titleTag: TitleTag = "h1",
-}: {
-  id: string;
-  title: string;
-  className?: string;
-  titleClassName?: string;
-  children?: React.ReactNode;
-  sparkleLink?: string;
-  showSparkle?: boolean;
-  sparkleText?: string;
-  showActions?: boolean;
-  titleTag?: keyof JSX.IntrinsicElements;
-}) {
+export function Narration(props: PropsWithChildren<NarrationProps>): ReactElement {
+  const {
+    id,
+    title,
+    className,
+    children,
+    titleClassName,
+    sparkleLink,
+    showSparkle = true,
+    sparkleText,
+    showActions = false,
+    titleTag: TitleTag = "h1",
+  } = props;
+
   const { getContent, isLoading } = useNarration();
 
   const loading = isLoading(id);
@@ -150,7 +197,7 @@ export function GoodExample({ docId, onSubmit }: { docId: string; onSubmit?: Fun
   return (
     <SubmitButton
       tooltip="Save as good example"
-      action={() => saveExample({ docId, verdict: "good" })}
+      action={() => saveExample && saveExample({ docId, verdict: "good" })}
       onSubmit={onSubmit}
       icon={<HandThumbUpIcon />}
       docId={docId}
@@ -173,7 +220,7 @@ export function BadExample({ docId, onSubmit }: { docId: string; onSubmit?: Func
   return (
     <SubmitButton
       tooltip="Save as bad example"
-      action={() => saveExample({ docId, verdict: "bad" })}
+      action={() => saveExample && saveExample({ docId, verdict: "bad" })}
       onSubmit={onSubmit}
       icon={<HandThumbDownIcon />}
       docId={docId}

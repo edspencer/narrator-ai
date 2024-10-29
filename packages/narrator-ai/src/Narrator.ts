@@ -158,23 +158,47 @@ const examplesByVerdict = (examplesDir: string, key: string, verdict: string) =>
   examplesForKey(examplesDir, verdict + "/" + key);
 
 /**
- * A class responsible for generating content using a model,
- * training on examples, and saving the results.
+ * Narrator generates meta-content narrations based on other content. It shines at reading and
+ * understanding your existing content like articles, help pages, blog posts, etc, and
+ * generating short, friendly summaries that tell the reader what content may be most useful to them.
  *
- * Example usage:
- * ```typescript
- * const narrator = new Narrator({
- *   outputDir: "./output",
- *   examplesDir: "./examples",
+ * All of the configurations for Narrator are optional, but if you want to generate and save content you
+ * can pass in `outputDir` and (optionally) `outputFilename` to have Narrator automatically save its
+ * generations for you. For example, if we want to save our generated content as `.md` files in
+ * the `./editorial` directory, we can configure it like this:
+ *
+ * ```tsx
+ * export const narrator = new Narrator({
+ *   outputFilename: (docId) => `${docId}.md`,
+ *   outputDir: path.join(process.cwd(), "editorial"),
  * });
- *
- * const task: GenerationTask = {
- *   docId: "example1",
- *   prompt: "Generate a summary for this document",
- * };
- *
- * await narrator.train(task);
  * ```
+ *
+ * Now we can generate some content, which in this case will be saved to `./editorial/tag/ai.md`
+ * (directories will be created for you):
+ *
+ * ```tsx
+ * const content = await narrator.generate(
+ *   {
+ *     docId: "tag/ai",
+ *     suffix: "Please reply with only the markdown you generate", //suffix is optional
+ *     prompt: `
+ * These are summaries of my most recent articles about AI. Your task is to generate a 2-3 sentence
+ * introduction that tells readers at-a-glance what I've been writing about. Please generate markdown,
+ * and include links to the articles. Do not use triple backticks or section headings in your response.
+ *
+ * <<Articles go here>>
+ * `,
+ *   },
+ *   { save: true }
+ * );
+ * ```
+ *
+ * This will generate content for you and save it according to the configuration you provided. You can set
+ * `docId` to whatever you want - in this case we're generating intro text for a blog that contains
+ * [articles about AI](https://edspencer.net/blog/tag/ai). If you don't specify a `model` it will default
+ * to using OpenAI's "gpt-4o", but you can pass in any model provided by the
+ * [Vercel AI SDK](https://sdk.vercel.ai/docs/introduction).
  */
 export class Narrator {
   /**
@@ -237,16 +261,7 @@ export class Narrator {
   /**
    * Creates a new instance of the Narrator class.
    *
-   * @param {Object} args - The argument object.
-   * @param {number} [args.parallel] - Number of parallel processes to use when running generateMulti (optional).
-   * @param {string} [args.outputDir] - Directory where generated outputs will be saved (optional).
-   * @param {Function} [args.outputFilename] - Function to generate the output filename based on the document ID (optional).
-   * @param {string} [args.examplesDir] - Directory where example YAML files are stored (optional).
-   * @param {Function} [args.exampleTemplate=defaultExampleTemplate] - Function to format examples (optional, default is `defaultExampleTemplate`).
-   * @param {number} [args.temperature=0.9] - Temperature for the model generation (optional, default is 0.9).
-   * @param {any} [args.model=openai("gpt-4o")] - The model to use for text generation (optional, default is `openai("gpt-4o")`).
-   * @param {winston.Logger} [args.logger=defaultNarratorLogger] - Custom logger instance (optional, default is `defaultNarratorLogger`).
-   * @param {Trainer} [args.trainer=new HumanTrainer()] - Trainer instance to evaluate generated examples (optional, default is a new instance of `HumanTrainer`).
+   * @param {NarratorArgs} args - The arguments to configure the Narrator instance.
    */
   constructor({
     parallel,

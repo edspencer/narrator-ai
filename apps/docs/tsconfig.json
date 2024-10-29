@@ -1,21 +1,7 @@
 {
-  "exclude": [
-    "node_modules"
-  ],
-  "extends": "@narrator-ai/tsconfig/nextjs.json",
+  // This file is not used in compilation. It is here just for a nice editor experience.
+  "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
-    "jsx": "preserve",
-    "outDir": "dist",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
-  },
-  "include": [
-    "src",
-    "next-env.d.ts",
-    ".next/types/**/*.ts"
-  ]
+    "baseUrl": "."
+  }
 }
