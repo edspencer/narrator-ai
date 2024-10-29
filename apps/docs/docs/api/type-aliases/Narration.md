@@ -20,4 +20,4 @@ The unique identifier for the document.
 
 ## Defined in
 
-[types.ts:55](https://github.com/edspencer/narrator-ai/blob/9728cb1b3e5041eeff1a44d2ebffcca474165895/packages/narrator-ai/src/types.ts#L55)
+[types.ts:55](https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/types.ts#L55)

@@ -26,4 +26,4 @@ The rendered SubmitButton component.
 
 ## Defined in
 
-[Narration.tsx:217](https://github.com/edspencer/narrator-ai/blob/9728cb1b3e5041eeff1a44d2ebffcca474165895/packages/react/src/Narration.tsx#L217)
+[Narration.tsx:217](https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/react/src/Narration.tsx#L217)

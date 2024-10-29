@@ -14,7 +14,7 @@ If not provided, it defaults to the generated content associated with the docume
 
 #### Defined in
 
-[Narrator.ts:133](https://github.com/edspencer/narrator-ai/blob/9728cb1b3e5041eeff1a44d2ebffcca474165895/packages/narrator-ai/src/Narrator.ts#L133)
+[Narrator.ts:133](https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L133)
 
 ***
 
@@ -26,7 +26,7 @@ The document ID for the example. This ID is used to identify the document being 
 
 #### Defined in
 
-[Narrator.ts:126](https://github.com/edspencer/narrator-ai/blob/9728cb1b3e5041eeff1a44d2ebffcca474165895/packages/narrator-ai/src/Narrator.ts#L126)
+[Narrator.ts:126](https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L126)
 
 ***
 
@@ -40,7 +40,7 @@ the example was marked as "good" or "bad".
 
 #### Defined in
 
-[Narrator.ts:146](https://github.com/edspencer/narrator-ai/blob/9728cb1b3e5041eeff1a44d2ebffcca474165895/packages/narrator-ai/src/Narrator.ts#L146)
+[Narrator.ts:146](https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L146)
 
 ***
 
@@ -53,4 +53,4 @@ This verdict is used to categorize the example.
 
 #### Defined in
 
-[Narrator.ts:139](https://github.com/edspencer/narrator-ai/blob/9728cb1b3e5041eeff1a44d2ebffcca474165895/packages/narrator-ai/src/Narrator.ts#L139)
+[Narrator.ts:139](https://github.com/edspencer/narrator-ai/blob/a524b8822fae61097d8b11019e587b0b06c3350a/packages/narrator-ai/src/Narrator.ts#L139)
